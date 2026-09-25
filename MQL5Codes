@@ -1,0 +1,1225 @@
+//+------------------------------------------------------------------+
+//|                                               EngulfingPure.mq5 |
+//|          Pure Engulfing Candle Expert Advisor for MetaTrader 5   |
+//|                                                                  |
+//|  Entry  : bullish / bearish engulfing on CLOSED candles ONLY     |
+//|  ATR    : used for Stop Loss, Take Profit and risk sizing ONLY   |
+//|  Visual : yellow rectangles, arrows and labels on every signal   |
+//+------------------------------------------------------------------+
+#property copyright "Multi-Agent MQL5 Project"
+#property link      ""
+#property version   "2.00"
+#property description "Pure Engulfing candle EA - the engulfing pattern is the only entry trigger."
+#property description "R-edition: broker-agnostic risk sizing (R1/R2), daily loss lock (R3),"
+#property description "fixed-TP trailing after +1R (R4) and minimum SL distance floors (R5)."
+
+#include <Trade/Trade.mqh>
+
+//--- inputs
+input group "=== Trading ==="
+input long            MagicNumber           = 20260904;          // Magic Number
+input bool            AllowBuy              = true;              // Allow Buy
+input bool            AllowSell             = true;              // Allow Sell
+input int             MaxPositions          = 1;                 // Maximum Positions
+input int             MaxSpreadPoints       = 0;                 // Max Spread in Points (0 = disabled)
+input bool            CloseOnOppositeSignal = false;             // Close Position on Opposite Signal
+input ENUM_TIMEFRAMES TradingTimeframe      = PERIOD_CURRENT;    // Trading Timeframe
+
+input group "=== Risk Management ==="
+input bool            UseRiskBasedLot       = true;              // Use Risk-Based Lot Sizing
+input double          RiskPercent           = 1.0;               // Risk Percent of Equity per Trade
+input double          FixedLot              = 0.0;               // Fixed Lot (when risk sizing off)
+input double          MaxLotCap             = 2.0;               // R2: Absolute Lot Cap (0 = disabled)
+input double          MaxRiskOvershoot      = 1.5;               // R2: Block if realized risk > x * target
+input double          DailyLossLimitPct     = 3.0;               // R3: Daily Loss Lock % of day-start equity (0 = off)
+input int             MaxTradesPerDay       = 10;                // R3: Max entries per day (0 = off)
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+input group "=== ATR / SL / TP ==="
+input int             ATR_Period            = 14;
+input double          SL_Buffer_ATR         = 0.35;   // R5: Buffer beyond Engulfing structure (was 0.10)
+input double          RiskReward             = 2.0;    // TP = R x RiskReward
+input double          MinSL_ATR_Mult        = 1.0;    // R5: SL distance >= x * ATR
+input double          MinSL_Spread_Mult     = 4.0;    // R5: SL distance >= x * current spread
+
+input group "=== Trailing Stop ==="
+input bool            UseTrailingStop       = true;   // Enable ATR Trailing Stop
+input double          ATR_Trail_Multiplier  = 1.0;    // ATR multiplier for trailing
+input double          Trail_Start_R         = 1.0;    // R4: Start trailing after +xR profit (0 = immediate)
+input group "=== Display ==="
+input bool            ShowTradeInfo         = true;              // Show Trade Info Panel
+
+//--- global state
+CTrade   trade;
+int      g_atrHandle         = INVALID_HANDLE;   // ATR indicator handle
+datetime g_lastBarTime       = 0;                // new-bar detection
+datetime g_lastSignalBarTime = 0;                // duplicate signal prevention
+datetime g_dayStart          = 0;                // R3: current trading day (server)
+double   g_dayStartEquity    = 0.0;              // R3: equity at day start
+int      g_dayTrades         = 0;                // R3: entries counted today
+
+//+------------------------------------------------------------------+
+//| Expert initialization                                            |
+//+------------------------------------------------------------------+
+int OnInit()
+  {
+   if(ATR_Period < 1)
+     { Print("[ERROR] ATR_Period must be >= 1"); return(INIT_PARAMETERS_INCORRECT); }
+   if(SL_Buffer_ATR < 0.0)
+     {
+      Print("[ERROR] SL_Buffer_ATR must be >= 0");
+      return(INIT_PARAMETERS_INCORRECT);
+     }
+
+   if(RiskReward <= 0.0)
+     {
+      Print("[ERROR] RiskReward must be > 0");
+      return(INIT_PARAMETERS_INCORRECT);
+     }
+   if(MaxPositions < 1)
+     { Print("[ERROR] MaxPositions must be >= 1"); return(INIT_PARAMETERS_INCORRECT); }
+   if(UseRiskBasedLot)
+     {
+      if(RiskPercent <= 0.0 || RiskPercent > 100.0)
+        { Print("[ERROR] RiskPercent must be in (0..100]"); return(INIT_PARAMETERS_INCORRECT); }
+     }
+   else
+     {
+      if(FixedLot <= 0.0)
+        {
+         Print("[ERROR] FixedLot must be > 0 when UseRiskBasedLot is false");
+         return(INIT_PARAMETERS_INCORRECT);
+        }
+     }
+
+   g_atrHandle = iATR(_Symbol, TradingTimeframe, ATR_Period);
+   if(g_atrHandle == INVALID_HANDLE)
+     { Print("[ERROR] Failed to create ATR handle, err=", GetLastError()); return(INIT_FAILED); }
+
+   trade.SetExpertMagicNumber((ulong)MagicNumber);
+   trade.SetDeviationInPoints(20);
+   trade.LogLevel(LOG_LEVEL_ERRORS);
+
+//--- select an order filling mode the symbol actually supports
+   long filling = SymbolInfoInteger(_Symbol, SYMBOL_FILLING_MODE);
+   if((filling & SYMBOL_FILLING_FOK) == SYMBOL_FILLING_FOK)
+      trade.SetTypeFilling(ORDER_FILLING_FOK);
+   else
+      if((filling & SYMBOL_FILLING_IOC) == SYMBOL_FILLING_IOC)
+         trade.SetTypeFilling(ORDER_FILLING_IOC);
+      else
+         trade.SetTypeFilling(ORDER_FILLING_RETURN);
+
+   Print("[ENGULFING] EA initialized. Symbol=", _Symbol,
+      " TF=", EnumToString(TradingTimeframe),
+      " Magic=", (string)MagicNumber,
+      " ATR(", (string)ATR_Period, ")",
+      " SL Buffer ATR=", DoubleToString(SL_Buffer_ATR, 2),
+      " RiskReward=", DoubleToString(RiskReward, 2));   return(INIT_SUCCEEDED);
+  }
+
+//+------------------------------------------------------------------+
+//| Expert deinitialization                                          |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+  {
+   if(g_atrHandle != INVALID_HANDLE)
+      IndicatorRelease(g_atrHandle);
+   g_atrHandle = INVALID_HANDLE;
+   Comment("");
+// NOTE: yellow chart objects are intentionally kept so that historical
+// signals remain visible on the chart (requirement Part 13).
+  }
+
+//+------------------------------------------------------------------+
+//| Expert tick handler                                              |
+//+------------------------------------------------------------------+
+void OnTick()
+  {
+//--- manage trailing stop on every tick
+   ManageTrailingStop();
+
+//--- evaluate the strategy exactly once per new bar
+   if(!IsNewBar())
+      return;
+
+//--- two most recently COMPLETED candles (never the forming bar 0)
+   MqlRates rates[];
+   ArraySetAsSeries(rates, true);
+   if(CopyRates(_Symbol, TradingTimeframe, 1, 2, rates) != 2)
+     {
+      Print("[ERROR] CopyRates failed (err=", GetLastError(), ") - not enough closed bars");
+      return;
+     }
+   MqlRates curr = rates[0];   // just closed
+   MqlRates prev = rates[1];   // the one before it
+   datetime signalBarTime = curr.time;
+
+//--- duplicate prevention: one trade attempt per signal candle
+   if(signalBarTime == g_lastSignalBarTime)
+      return;
+
+//--- freshness: do not trade signals whose candle closed long ago
+//    (weekend/holiday gaps, EA attach after a long pause).
+//    The pattern is ALWAYS drawn regardless (Parts 12/13).
+   bool fresh = IsSignalFresh(signalBarTime);
+
+   if(IsBullishEngulfing(prev, curr))
+     {
+      Print("[ENGULFING] Bullish pattern detected at ",
+            TimeToString(signalBarTime, TIME_DATE|TIME_MINUTES));
+      g_lastSignalBarTime = signalBarTime;
+      DrawBullishEngulfing(prev, curr);
+      if(!fresh)
+        { Print("[TRADE] Signal candle is stale - pattern marked, trade skipped"); return; }
+      ProcessSignal(POSITION_TYPE_BUY, signalBarTime, prev, curr);
+     }
+   else
+      if(IsBearishEngulfing(prev, curr))
+        {
+         Print("[ENGULFING] Bearish pattern detected at ",
+               TimeToString(signalBarTime, TIME_DATE|TIME_MINUTES));
+         g_lastSignalBarTime = signalBarTime;
+         DrawBearishEngulfing(prev, curr);
+         if(!fresh)
+           { Print("[TRADE] Signal candle is stale - pattern marked, trade skipped"); return; }
+         ProcessSignal(POSITION_TYPE_SELL, signalBarTime, prev, curr);
+        }
+  }
+
+//+------------------------------------------------------------------+
+//| Freshness of the signal candle (guards stale execution)          |
+//| tradeable if it closed within the last 2 periods (DST-safe)      |
+//+------------------------------------------------------------------+
+bool IsSignalFresh(const datetime signalBarTime)
+  {
+   int ps = PeriodSeconds(TradingTimeframe);
+   if(ps <= 0)
+      ps = PeriodSeconds(PERIOD_M1);
+   if(ps <= 0)
+      return(true);
+   double gap = (double)g_lastBarTime - (double)signalBarTime;
+   return(gap <= 2.0 * (double)ps);
+  }
+
+//+------------------------------------------------------------------+
+//| New bar detection (once per new bar of TradingTimeframe)         |
+//+------------------------------------------------------------------+
+bool IsNewBar()
+  {
+   datetime t = iTime(_Symbol, TradingTimeframe, 0);
+   if(t == 0)
+      return(false);
+   if(t == g_lastBarTime)
+      return(false);
+   g_lastBarTime = t;
+   return(true);
+  }
+
+//+------------------------------------------------------------------+
+//| Bullish Engulfing: P bearish, C bullish, C body engulfs P body   |
+//+------------------------------------------------------------------+
+bool IsBullishEngulfing(const MqlRates &prev, const MqlRates &curr)
+  {
+   if(!(prev.close < prev.open))
+      return(false);  // P must be bearish
+   if(!(curr.close > curr.open))
+      return(false);  // C must be bullish
+   return(curr.open <= prev.close && curr.close >= prev.open);
+  }
+
+//+------------------------------------------------------------------+
+//| Bearish Engulfing: P bullish, C bearish, C body engulfs P body   |
+//+------------------------------------------------------------------+
+bool IsBearishEngulfing(const MqlRates &prev, const MqlRates &curr)
+  {
+   if(!(prev.close > prev.open))
+      return(false);  // P must be bullish
+   if(!(curr.close < curr.open))
+      return(false);  // C must be bearish
+   return(curr.open >= prev.close && curr.close <= prev.open);
+  }
+
+//+------------------------------------------------------------------+
+//| ATR value of the just-closed candle (bar shift 1)                |
+//+------------------------------------------------------------------+
+double GetATR()
+  {
+   double buf[];
+   if(CopyBuffer(g_atrHandle, 0, 1, 1, buf) != 1)
+     {
+      Print("[ERROR] CopyBuffer failed for ATR (err=", GetLastError(), ")");
+      return(0.0);
+     }
+   return(buf[0]);
+  }
+
+//+------------------------------------------------------------------+
+//| Current spread in points (-1 on invalid quote)                   |
+//+------------------------------------------------------------------+
+int CheckSpread()
+  {
+   double ask = SymbolInfoDouble(_Symbol, SYMBOL_ASK);
+   double bid = SymbolInfoDouble(_Symbol, SYMBOL_BID);
+   if(ask <= 0.0 || bid <= 0.0 || _Point <= 0.0)
+      return(-1);
+   return((int)MathRound((ask - bid) / _Point));
+  }
+
+//+------------------------------------------------------------------+
+//| Permissions, allowed direction and spread filter                 |
+//+------------------------------------------------------------------+
+bool CheckTradingConditions(const ENUM_POSITION_TYPE dir, const int spread)
+  {
+   if(TerminalInfoInteger(TERMINAL_TRADE_ALLOWED) == 0)
+     { Print("[TRADE] Trading is disabled in terminal settings"); return(false); }
+   if(MQLInfoInteger(MQL_TRADE_ALLOWED) == 0)
+     { Print("[TRADE] Algorithmic trading is not allowed"); return(false); }
+   if(SymbolInfoInteger(_Symbol, SYMBOL_TRADE_MODE) == SYMBOL_TRADE_MODE_DISABLED)
+     { Print("[TRADE] Symbol trading is disabled"); return(false); }
+   if(dir == POSITION_TYPE_BUY && !AllowBuy)
+     { Print("[TRADE] BUY signals are disabled by input"); return(false); }
+   if(dir == POSITION_TYPE_SELL && !AllowSell)
+     { Print("[TRADE] SELL signals are disabled by input"); return(false); }
+   if(spread < 0)
+     { Print("[ERROR] Invalid quote data - trade skipped"); return(false); }
+   if(MaxSpreadPoints > 0 && spread > MaxSpreadPoints)
+     {
+      Print("[TRADE] Spread ", spread, " exceeds MaxSpreadPoints ", MaxSpreadPoints,
+            " - pattern marked, trade skipped");
+      return(false);
+     }
+   return(true);
+  }
+
+//+------------------------------------------------------------------+
+//| R3: daily loss lock + daily trade cap (server-day based)         |
+//+------------------------------------------------------------------+
+bool CheckDailyRiskLimits()
+  {
+   datetime today = (datetime)((long)TimeCurrent() / 86400) * 86400;
+
+   if(today != g_dayStart)
+     {
+      g_dayStart       = today;
+      g_dayStartEquity = AccountInfoDouble(ACCOUNT_EQUITY);
+      g_dayTrades      = 0;
+     }
+
+   if(MaxTradesPerDay > 0 && g_dayTrades >= MaxTradesPerDay)
+     {
+      Print("[RISK] MaxTradesPerDay (", MaxTradesPerDay, ") reached - entry blocked");
+      return(false);
+     }
+
+   if(DailyLossLimitPct > 0.0 && g_dayStartEquity > 0.0)
+     {
+      double drop = g_dayStartEquity - AccountInfoDouble(ACCOUNT_EQUITY);
+      if(drop >= g_dayStartEquity * DailyLossLimitPct / 100.0)
+        {
+         Print("[RISK] Daily loss limit hit (", DoubleToString(drop, 2),
+               ") - trading locked until next day");
+         return(false);
+        }
+     }
+   return(true);
+  }
+
+//+------------------------------------------------------------------+
+//| Validate SL/TP distance vs broker minimum stop level             |
+//+------------------------------------------------------------------+
+bool ValidateStops(const ENUM_POSITION_TYPE dir,
+                   const double entry,
+                   double &sl,
+                   double &tp)
+  {
+   double bid = SymbolInfoDouble(_Symbol, SYMBOL_BID);
+   double ask = SymbolInfoDouble(_Symbol, SYMBOL_ASK);
+   double point = _Point;
+
+   if(bid <= 0.0 || ask <= 0.0 || point <= 0.0)
+     {
+      Print("[ERROR] Invalid market prices - cannot validate stops");
+      return(false);
+     }
+
+   long stopLevel  = SymbolInfoInteger(_Symbol, SYMBOL_TRADE_STOPS_LEVEL);
+   long freezeLevel = SymbolInfoInteger(_Symbol, SYMBOL_TRADE_FREEZE_LEVEL);
+
+   double minDist = (double)MathMax(stopLevel, freezeLevel) * point;
+
+//--- small safety buffer
+   minDist += 2.0 * point;
+
+   bool adjusted = false;
+
+   if(dir == POSITION_TYPE_BUY)
+     {
+      // BUY:
+      // SL must be below BID
+      // TP must be above ASK
+
+      if((bid - sl) < minDist)
+        {
+         sl = bid - minDist;
+         adjusted = true;
+        }
+
+      if((tp - ask) < minDist)
+        {
+         tp = ask + minDist;
+         adjusted = true;
+        }
+
+      //--- final geometry check
+      if(sl >= bid || tp <= ask)
+        {
+         Print("[ERROR] Invalid BUY stops: ",
+               "Bid=", DoubleToString(bid, _Digits),
+               " Ask=", DoubleToString(ask, _Digits),
+               " SL=", DoubleToString(sl, _Digits),
+               " TP=", DoubleToString(tp, _Digits));
+         return(false);
+        }
+     }
+   else
+      if(dir == POSITION_TYPE_SELL)
+        {
+         // SELL:
+         // SL must be above ASK
+         // TP must be below BID
+
+         if((sl - ask) < minDist)
+           {
+            sl = ask + minDist;
+            adjusted = true;
+           }
+
+         if((bid - tp) < minDist)
+           {
+            tp = bid - minDist;
+            adjusted = true;
+           }
+
+         //--- final geometry check
+         if(sl <= ask || tp >= bid)
+           {
+            Print("[ERROR] Invalid SELL stops: ",
+                  "Bid=", DoubleToString(bid, _Digits),
+                  " Ask=", DoubleToString(ask, _Digits),
+                  " SL=", DoubleToString(sl, _Digits),
+                  " TP=", DoubleToString(tp, _Digits));
+            return(false);
+           }
+        }
+      else
+         return(false);
+
+   sl = NormalizeDouble(sl, _Digits);
+   tp = NormalizeDouble(tp, _Digits);
+
+   if(adjusted)
+      Print("[TRADE] SL/TP adjusted for broker stop/freeze level | ",
+            "Bid=", DoubleToString(bid, _Digits),
+            " Ask=", DoubleToString(ask, _Digits),
+            " SL=", DoubleToString(sl, _Digits),
+            " TP=", DoubleToString(tp, _Digits),
+            " MinDist=", DoubleToString(minDist, _Digits));
+
+   return(true);
+  }
+//+------------------------------------------------------------------+
+//| Count EA positions (same symbol + magic). filter=-1: any type    |
+//+------------------------------------------------------------------+
+int CountOpenPositions(const int filter = -1)
+  {
+   int count = 0;
+   for(int i = PositionsTotal() - 1; i >= 0; i--)
+     {
+      ulong ticket = PositionGetTicket(i);
+      if(ticket == 0)
+         continue;
+      if(PositionGetString(POSITION_SYMBOL) != _Symbol)
+         continue;
+      if(PositionGetInteger(POSITION_MAGIC) != MagicNumber)
+         continue;
+      long type = PositionGetInteger(POSITION_TYPE);
+      if(filter != -1 && type != filter)
+         continue;
+      count++;
+     }
+   return(count);
+  }
+
+//+------------------------------------------------------------------+
+//| ATR-based trailing stop                                          |
+//+------------------------------------------------------------------+
+//+------------------------------------------------------------------+
+//| ATR-based trailing SL + TP                                       |
+//| SL and TP trail together with 1 ATR distance from current price |
+//+------------------------------------------------------------------+
+void ManageTrailingStop()
+  {
+   if(!UseTrailingStop)
+      return;
+
+   double atr = GetATR();
+   if(atr <= 0.0)
+      return;
+
+//--- trailing distance = ATR x multiplier
+   double trailDistance = atr * ATR_Trail_Multiplier;
+
+   double bid = SymbolInfoDouble(_Symbol, SYMBOL_BID);
+   double ask = SymbolInfoDouble(_Symbol, SYMBOL_ASK);
+
+   if(bid <= 0.0 || ask <= 0.0)
+      return;
+
+//--- broker minimum distance
+   long stopLevel  = SymbolInfoInteger(_Symbol, SYMBOL_TRADE_STOPS_LEVEL);
+   long freezeLevel = SymbolInfoInteger(_Symbol, SYMBOL_TRADE_FREEZE_LEVEL);
+
+   double minDistance =
+      (double)MathMax(stopLevel, freezeLevel) * _Point;
+
+//--- small safety buffer
+   minDistance += 2.0 * _Point;
+
+//--- ATR distance must not be smaller than broker requirement
+   if(trailDistance < minDistance)
+      trailDistance = minDistance;
+
+   for(int i = PositionsTotal() - 1; i >= 0; i--)
+     {
+      ulong ticket = PositionGetTicket(i);
+
+      if(ticket == 0)
+         continue;
+
+      //--- only this symbol
+      if(PositionGetString(POSITION_SYMBOL) != _Symbol)
+         continue;
+
+      //--- only positions opened by this EA
+      if(PositionGetInteger(POSITION_MAGIC) != MagicNumber)
+         continue;
+
+      ENUM_POSITION_TYPE type =
+         (ENUM_POSITION_TYPE)PositionGetInteger(POSITION_TYPE);
+
+      double currentSL = PositionGetDouble(POSITION_SL);
+      double currentTP = PositionGetDouble(POSITION_TP);
+      double open      = PositionGetDouble(POSITION_PRICE_OPEN);
+
+      //--- R4: initial risk recovered from the FIXED TP (TP = entry +/- R * RiskReward)
+      double initRisk = (currentTP > 0.0 && RiskReward > 0.0)
+                        ? MathAbs(currentTP - open) / RiskReward
+                        : 0.0;
+
+      double newSL = currentSL;
+
+      //==============================================================
+      // BUY  (R4: TP stays fixed, SL trails only after +Trail_Start_R)
+      //==============================================================
+      if(type == POSITION_TYPE_BUY)
+        {
+         //--- not activated until price is Trail_Start_R * R in profit
+         if(initRisk > 0.0 && (bid - open) < Trail_Start_R * initRisk)
+            continue;
+
+         double calculatedSL = bid - trailDistance;
+
+         //--- SL can ONLY move upward
+         if(currentSL <= 0.0 || calculatedSL > currentSL)
+            newSL = calculatedSL;
+
+         //--- make sure SL is on the correct side of market
+         if(newSL >= bid)
+            newSL = bid - minDistance;
+        }
+
+      //==============================================================
+      // SELL (R4: TP stays fixed, SL trails only after +Trail_Start_R)
+      //==============================================================
+      else
+         if(type == POSITION_TYPE_SELL)
+           {
+            if(initRisk > 0.0 && (open - ask) < Trail_Start_R * initRisk)
+               continue;
+
+            double calculatedSL = ask + trailDistance;
+
+            //--- SL can ONLY move downward
+            if(currentSL <= 0.0 || calculatedSL < currentSL)
+               newSL = calculatedSL;
+
+            //--- make sure SL is on the correct side of market
+            if(newSL <= ask)
+               newSL = ask + minDistance;
+           }
+         else
+            continue;
+
+      //--- normalize price
+      newSL = NormalizeDouble(newSL, _Digits);
+
+      //--- throttle: skip micro-modifications (< 5 points)
+      if(currentSL > 0.0 && MathAbs(newSL - currentSL) < 5.0 * _Point)
+         continue;
+
+      //--- R4: TP is passed back UNCHANGED - it never moves
+      if(!trade.PositionModify(ticket, newSL, currentTP))
+        {
+         Print("[TRAILING] Failed to modify position #",
+               (string)ticket,
+               " | SL=",
+               DoubleToString(newSL, _Digits),
+               " | retcode=",
+               (string)trade.ResultRetcode(),
+               " ",
+               trade.ResultRetcodeDescription());
+        }
+      else
+        {
+         Print("[TRAILING] Position #",
+               (string)ticket,
+               " modified | ",
+               (type == POSITION_TYPE_BUY ? "BUY" : "SELL"),
+               " | SL=",
+               DoubleToString(newSL, _Digits),
+               " | TP fixed at ",
+               DoubleToString(currentTP, _Digits),
+               " | ATR=",
+               DoubleToString(atr, _Digits));
+        }
+     }
+  }
+//+------------------------------------------------------------------+
+//| Close EA-owned opposite positions (CloseOnOppositeSignal=true)   |
+//+------------------------------------------------------------------+
+bool CloseOppositePositions(const int toCloseType)
+  {
+   bool allClosed = true;
+   for(int i = PositionsTotal() - 1; i >= 0; i--)
+     {
+      ulong ticket = PositionGetTicket(i);
+      if(ticket == 0)
+         continue;
+      if(PositionGetString(POSITION_SYMBOL) != _Symbol)
+         continue;
+      if(PositionGetInteger(POSITION_MAGIC) != MagicNumber)
+         continue;
+      if((int)PositionGetInteger(POSITION_TYPE) != toCloseType)
+         continue;
+
+      Print("[TRADE] Closing opposite position #", (string)ticket, " on opposite signal");
+      if(!trade.PositionClose(ticket) || trade.ResultRetcode() != TRADE_RETCODE_DONE)
+        {
+         Print("[TRADE] Failed to close position #", (string)ticket, " retcode=",
+               (string)trade.ResultRetcode(), " ", trade.ResultRetcodeDescription());
+         allClosed = false;
+        }
+     }
+   if(!allClosed)
+      return(false);
+
+//--- in live mode, wait until the closed position is actually gone
+   int guard = 0;
+   while(MQLInfoInteger(MQL_TESTER) == 0 && guard < 50 &&
+         CountOpenPositions(toCloseType) > 0)
+     {
+      Sleep(100);
+      guard++;
+     }
+   if(CountOpenPositions(toCloseType) > 0)
+     {
+      Print("[ERROR] Opposite position(s) still open - aborting new entry");
+      return(false);
+     }
+   return(true);
+  }
+
+//+------------------------------------------------------------------+
+//| Risk-based or fixed lot sizing (no 1-lot monetary assumptions)   |
+//+------------------------------------------------------------------+
+//+------------------------------------------------------------------+
+//| R1: broker-agnostic loss for 1.0 lot between entry and SL        |
+//+------------------------------------------------------------------+
+double LossPerLot(const ENUM_POSITION_TYPE dir, const double entry, const double sl)
+  {
+   ENUM_ORDER_TYPE ot = (dir == POSITION_TYPE_BUY) ? ORDER_TYPE_BUY : ORDER_TYPE_SELL;
+
+//--- method A: terminal's own P/L simulation (any broker / symbol / currency)
+   double profitA = 0.0;
+   double lossA   = 0.0;
+   if(OrderCalcProfit(ot, _Symbol, 1.0, entry, sl, profitA))
+      lossA = MathAbs(profitA);
+
+//--- method B: tick-value math (cross-check only)
+   double tickValue = SymbolInfoDouble(_Symbol, SYMBOL_TRADE_TICK_VALUE);
+   double tickSize  = SymbolInfoDouble(_Symbol, SYMBOL_TRADE_TICK_SIZE);
+   double lossB     = (tickValue > 0.0 && tickSize > 0.0)
+                      ? MathAbs(entry - sl) / tickSize * tickValue
+                      : 0.0;
+
+//--- fail-closed: no valid number -> no trade
+   if(lossA <= 0.0 && lossB <= 0.0)
+      return(0.0);
+
+//--- conservative: larger loss estimate -> smaller lot
+   double loss = MathMax(lossA, lossB);
+
+//--- disagreement > 20% must be visible to the supervisor
+   if(lossA > 0.0 && lossB > 0.0 && MathAbs(lossA - lossB) / loss > 0.20)
+      Print("[RISK] lossPerLot mismatch: OrderCalcProfit=", DoubleToString(lossA, 2),
+            " | tick-math=", DoubleToString(lossB, 2),
+            " -> conservative value used");
+
+   return(loss);
+  }
+
+//+------------------------------------------------------------------+
+//| Risk-based lot sizing with automatic margin-based reduction      |
+//+------------------------------------------------------------------+
+double CalculateLotSize(const ENUM_POSITION_TYPE dir,
+                        const double entry,
+                        const double sl)
+  {
+   double volMin  = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MIN);
+   double volMax  = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_MAX);
+   double volStep = SymbolInfoDouble(_Symbol, SYMBOL_VOLUME_STEP);
+
+   if(volMin <= 0.0 || volStep <= 0.0)
+     {
+      Print("[ERROR] Invalid broker volume settings");
+      return(0.0);
+     }
+
+   double lot = 0.0;
+
+//--- 1. Calculate lot according to requested risk
+   if(UseRiskBasedLot)
+     {
+      double equity    = AccountInfoDouble(ACCOUNT_EQUITY);
+      double riskMoney = equity * RiskPercent / 100.0;
+
+      double slDist = MathAbs(entry - sl);
+      if(slDist <= 0.0)
+        {
+         Print("[ERROR] Invalid SL distance");
+         return(0.0);
+        }
+
+      //--- R1: broker-agnostic loss per lot (fail-closed)
+      double lossPerLot = LossPerLot(dir, entry, sl);
+      if(lossPerLot <= 0.0)
+        {
+         Print("[ERROR] Loss-per-lot unavailable - trade skipped (fail-closed)");
+         return(0.0);
+        }
+
+      lot = riskMoney / lossPerLot;
+     }
+   else
+     {
+      lot = FixedLot;
+     }
+
+   if(lot <= 0.0)
+     {
+      Print("[TRADE] Calculated lot is zero - trade skipped");
+      return(0.0);
+     }
+
+//--- 2. Respect broker maximum volume
+   if(volMax > 0.0 && lot > volMax)
+     {
+      Print("[TRADE] Risk-based lot ",
+            DoubleToString(lot, 2),
+            " above broker maximum - capped at ",
+            DoubleToString(volMax, 2));
+
+      lot = volMax;
+     }
+
+//--- 3. Calculate maximum lot affordable with current free margin
+   double price = (dir == POSITION_TYPE_BUY)
+                  ? SymbolInfoDouble(_Symbol, SYMBOL_ASK)
+                  : SymbolInfoDouble(_Symbol, SYMBOL_BID);
+
+   ENUM_ORDER_TYPE orderType = (dir == POSITION_TYPE_BUY)
+                               ? ORDER_TYPE_BUY
+                               : ORDER_TYPE_SELL;
+
+   double marginForOneLot = 0.0;
+
+   if(!OrderCalcMargin(orderType,
+                       _Symbol,
+                       1.0,
+                       price,
+                       marginForOneLot))
+     {
+      Print("[ERROR] OrderCalcMargin failed while calculating maximum lot. err=",
+            GetLastError());
+      return(0.0);
+     }
+
+   if(marginForOneLot <= 0.0)
+     {
+      Print("[ERROR] Invalid margin requirement for 1 lot");
+      return(0.0);
+     }
+
+   double freeMargin = AccountInfoDouble(ACCOUNT_MARGIN_FREE);
+
+//--- Keep a very small safety buffer to avoid rejection caused by
+//--- rounding / floating-point differences.
+   double usableMargin = freeMargin * 0.995;
+
+   double maxMarginLot = usableMargin / marginForOneLot;
+
+//--- 4. If margin requires a smaller lot, automatically reduce it
+   if(lot > maxMarginLot)
+     {
+      Print("[TRADE] Lot reduced بسبب insufficient margin: ",
+            DoubleToString(lot, 2),
+            " -> ",
+            DoubleToString(maxMarginLot, 2));
+
+      lot = maxMarginLot;
+     }
+
+//--- 5. Normalize DOWN to broker volume step
+   lot = NormalizeVolume(lot, volMin, volMax, volStep);
+
+//--- 6. Never force the minimum volume if it exceeds available margin
+   double finalMargin = 0.0;
+
+   if(!OrderCalcMargin(orderType,
+                       _Symbol,
+                       lot,
+                       price,
+                       finalMargin))
+     {
+      Print("[ERROR] Final margin calculation failed");
+      return(0.0);
+     }
+
+   if(finalMargin > freeMargin)
+     {
+      Print("[TRADE] Final lot still exceeds available margin - trade skipped");
+      return(0.0);
+     }
+
+//--- R2: absolute cap + realized-risk assertion (fail-closed)
+   if(MaxLotCap > 0.0 && lot > MaxLotCap)
+     {
+      Print("[RISK] Lot capped: ", DoubleToString(lot, 2), " -> ", DoubleToString(MaxLotCap, 2));
+      lot = NormalizeVolume(MaxLotCap, volMin, volMax, volStep);
+     }
+
+   if(UseRiskBasedLot && lot > 0.0)
+     {
+      double lossPerLotFinal = LossPerLot(dir, entry, sl);
+      if(lossPerLotFinal <= 0.0)
+         return(0.0);                                    // fail-closed
+
+      double realizedRisk = lossPerLotFinal * lot;
+      double riskTarget   = AccountInfoDouble(ACCOUNT_EQUITY) * RiskPercent / 100.0;
+
+      if(riskTarget > 0.0 && realizedRisk > MaxRiskOvershoot * riskTarget)
+        {
+         Print("[FATAL] Realized risk ", DoubleToString(realizedRisk, 2),
+               " > ", DoubleToString(MaxRiskOvershoot, 1), "x target ",
+               DoubleToString(riskTarget, 2), " - trade blocked");
+         return(0.0);
+        }
+     }
+
+   return(lot);
+  }
+//+------------------------------------------------------------------+
+//| Normalize lot to broker min / max / step                         |
+//+------------------------------------------------------------------+
+double NormalizeVolume(const double lot, const double volMin, const double volMax,
+                       const double volStep)
+  {
+   double result = lot;
+   if(volStep > 0.0)
+     {
+      //--- FLOOR to the volume step (risk-conservative: never rounds the lot
+      //    UP past the target risk), with a magnitude-proportional epsilon to
+      //      protect against binary-FP step division (e.g. 0.30/0.01 = 29.999...)
+      double raw = result / volStep;
+      result = MathFloor(raw + 0.5e-9 * MathMax(1.0, raw)) * volStep;
+     }
+   if(volMin > 0.0 && result < volMin)
+     {
+      Print("[TRADE] Lot ", DoubleToString(result, 2), " below broker minimum - using ",
+            DoubleToString(volMin, 2));
+      result = volMin;
+     }
+   if(volMax > 0.0 && result > volMax)
+     {
+      Print("[TRADE] Lot ", DoubleToString(result, 2), " above broker maximum - capped at ",
+            DoubleToString(volMax, 2));
+      result = volMax;
+     }
+   return(NormalizeDouble(result, 8));
+  }
+
+//+------------------------------------------------------------------+
+//| Margin validation (Part 10, step 9)                              |
+//+------------------------------------------------------------------+
+bool CheckMargin(const ENUM_POSITION_TYPE dir, const double lot)
+  {
+   double price = (dir == POSITION_TYPE_BUY) ? SymbolInfoDouble(_Symbol, SYMBOL_ASK)
+                  : SymbolInfoDouble(_Symbol, SYMBOL_BID);
+   double margin = 0.0;
+   if(!OrderCalcMargin(dir == POSITION_TYPE_BUY ? ORDER_TYPE_BUY : ORDER_TYPE_SELL,
+                       _Symbol, lot, price, margin))
+     {
+      Print("[ERROR] OrderCalcMargin failed (err=", GetLastError(), ") - trade skipped");
+      return(false);
+     }
+   double freeMargin = AccountInfoDouble(ACCOUNT_MARGIN_FREE);
+   if(margin > freeMargin)
+     {
+      Print("[TRADE] Insufficient margin: required ", DoubleToString(margin, 2),
+            ", free ", DoubleToString(freeMargin, 2), " - trade skipped");
+      return(false);
+     }
+   return(true);
+  }
+
+//+------------------------------------------------------------------+
+//| Submit a market BUY                                              |
+//+------------------------------------------------------------------+
+bool OpenBuy(const double lot, const double price, const double sl, const double tp,
+             const string comment)
+  {
+   return(trade.Buy(lot, _Symbol, 0.0, sl, tp, comment));
+  }
+
+//+------------------------------------------------------------------+
+//| Submit a market SELL                                             |
+//+------------------------------------------------------------------+
+bool OpenSell(const double lot, const double price, const double sl, const double tp,
+              const string comment)
+  {
+   return(trade.Sell(lot, _Symbol, 0.0, sl, tp, comment));
+  }
+
+//+------------------------------------------------------------------+
+//| Trade logging + info panel update                                |
+//+------------------------------------------------------------------+
+void LogTradeResult(const ENUM_POSITION_TYPE dir, const bool sent, const double entry,
+                    const double sl, const double tp, const double atr, const double lot,
+                    const datetime signalBarTime)
+  {
+   uint retcode = trade.ResultRetcode();
+   bool success = sent && (retcode == TRADE_RETCODE_DONE ||
+                           retcode == TRADE_RETCODE_DONE_PARTIAL ||
+                           retcode == TRADE_RETCODE_PLACED);
+   if(success)
+      Print("[TRADE] Position opened successfully (", (dir == POSITION_TYPE_BUY ? "BUY" : "SELL"),
+            ", lot=", DoubleToString(lot, 2), ", order=", (string)trade.ResultOrder(),
+            ", retcode=", (string)retcode, ")");
+   else
+      Print("[TRADE] Position rejected (retcode=", (string)retcode, " ",
+            trade.ResultRetcodeDescription(), ")");
+   DrawTradeInformation(dir, entry, sl, tp, atr, lot, signalBarTime, success, retcode);
+  }
+
+//+------------------------------------------------------------------+
+//| Full pre-trade checklist + submission (Part 10)                  |
+//+------------------------------------------------------------------+
+void ProcessSignal(const ENUM_POSITION_TYPE dir,
+                   const datetime signalBarTime,
+                   const MqlRates &prev,
+                   const MqlRates &curr)
+                     {
+//--- 1. permissions / allowed direction   2. spread
+   int spread = CheckSpread();
+   if(!CheckTradingConditions(dir, spread))
+      return;
+
+//--- R3: daily loss lock + daily trade cap
+   if(!CheckDailyRiskLimits())
+      return;
+
+//--- 3. ATR
+   double atr = GetATR();
+   if(atr <= 0.0)
+     { Print("[ERROR] ATR unavailable - trade skipped"); return; }
+
+//--- 4./5./6. entry, SL, TP
+   double bid = SymbolInfoDouble(_Symbol, SYMBOL_BID);
+   double ask = SymbolInfoDouble(_Symbol, SYMBOL_ASK);
+
+   if(bid <= 0.0 || ask <= 0.0)
+     {
+      Print("[ERROR] Invalid Bid/Ask - trade skipped");
+      return;
+     }
+
+//--- Refresh entry immediately before calculating stops
+   double entry = (dir == POSITION_TYPE_BUY) ? ask : bid;
+
+//--- Structure-based SL using the complete engulfing pattern
+double patternLow  = MathMin(prev.low, curr.low);
+double patternHigh = MathMax(prev.high, curr.high);
+
+double slBuffer = atr * SL_Buffer_ATR;
+
+double sl = 0.0;
+double tp = 0.0;
+
+//--- BUY: SL below the lowest point of the engulfing pattern
+if(dir == POSITION_TYPE_BUY)
+  {
+   sl = patternLow - slBuffer;
+  }
+//--- SELL: SL above the highest point of the engulfing pattern
+else if(dir == POSITION_TYPE_SELL)
+  {
+   sl = patternHigh + slBuffer;
+  }
+else
+  {
+   return;
+  }
+
+//--- Risk = actual Entry -> SL distance
+double riskDistance = MathAbs(entry - sl);
+
+if(riskDistance <= 0.0)
+  {
+   Print("[ERROR] Invalid structure-based SL distance");
+   return;
+  }
+
+//--- R5: enforce a minimum SL distance (ATR, spread, broker stop level)
+double spreadDist  = ask - bid;
+double stopLvlDist = (double)SymbolInfoInteger(_Symbol, SYMBOL_TRADE_STOPS_LEVEL) * _Point;
+
+double minRiskDist = MathMax(MinSL_ATR_Mult * atr,
+                     MathMax(MinSL_Spread_Mult * spreadDist, stopLvlDist));
+
+if(riskDistance < minRiskDist)
+  {
+   riskDistance = minRiskDist;
+   sl = (dir == POSITION_TYPE_BUY) ? entry - riskDistance
+                                   : entry + riskDistance;
+   Print("[RISK] SL widened to floor: dist=", DoubleToString(riskDistance, _Digits));
+  }
+
+//--- TP based on fixed Risk/Reward
+double tpDistance = riskDistance * RiskReward;
+
+tp = (dir == POSITION_TYPE_BUY)
+     ? entry + tpDistance
+     : entry - tpDistance;
+     //--- 7. stop-level validation
+   if(!ValidateStops(dir, entry, sl, tp))
+      return;
+
+   Print("[TRADE] ", (dir == POSITION_TYPE_BUY ? "BUY" : "SELL"), " signal | ATR = ",
+         DoubleToString(atr, _Digits), " | SL = ", DoubleToString(sl, _Digits),
+         " | TP = ", DoubleToString(tp, _Digits), " | Spread = ", spread, " points");
+
+//--- 8. opposite signal handling
+   int oppositeType = (dir == POSITION_TYPE_BUY) ? (int)POSITION_TYPE_SELL : (int)POSITION_TYPE_BUY;
+   if(CloseOnOppositeSignal && CountOpenPositions(oppositeType) > 0)
+      if(!CloseOppositePositions(oppositeType))
+         return;
+
+//--- 9. max positions
+   if(CountOpenPositions() >= MaxPositions)
+     {
+      Print("[TRADE] MaxPositions (", MaxPositions, ") already reached - trade skipped");
+      return;
+     }
+
+//--- 10. lot size
+   double lot = CalculateLotSize(dir, entry, sl);
+   if(lot <= 0.0)
+      return;
+   Print("[TRADE] Lot = ", DoubleToString(lot, 2));
+
+//--- 11. margin validation
+   if(!CheckMargin(dir, lot))
+      return;
+
+//--- 12. submit
+   string tag = (dir == POSITION_TYPE_BUY ? "BUY" : "SELL") + " " + MakeObjectName("P", signalBarTime);
+   bool sent = (dir == POSITION_TYPE_BUY) ? OpenBuy(lot, entry, sl, tp, tag)
+               : OpenSell(lot, entry, sl, tp, tag);
+
+//--- R3: count today's entries
+   if(sent)
+      g_dayTrades++;
+
+//--- 13. verify + log
+   LogTradeResult(dir, sent, entry, sl, tp, atr, lot, signalBarTime);
+  }
+
+//+------------------------------------------------------------------+
+//| Unique object name: KIND_YYYYMMDD_HHMMSS (signal candle time)    |
+//+------------------------------------------------------------------+
+string MakeObjectName(string prefix, datetime t)
+  {
+   MqlDateTime dt;
+   TimeToStruct(t, dt);
+
+   string timeStr = StringFormat("%04d%02d%02d_%02d%02d%02d",
+                                 dt.year,
+                                 dt.mon,
+                                 dt.day,
+                                 dt.hour,
+                                 dt.min,
+                                 dt.sec);
+
+   return prefix + "_" + timeStr;
+  }
+//+------------------------------------------------------------------+
+//| Common object styling                                            |
+//+------------------------------------------------------------------+
+void ApplyObjectStyle(const string name)
+  {
+   ObjectSetInteger(0, name, OBJPROP_SELECTABLE, false);
+   ObjectSetInteger(0, name, OBJPROP_HIDDEN, true);
+   ObjectSetInteger(0, name, OBJPROP_BACK, false);
+  }
+
+//+------------------------------------------------------------------+
+//| Bullish: yellow rectangle + up arrow + text, below the pattern   |
+//+------------------------------------------------------------------+
+void DrawBullishEngulfing(const MqlRates &prev, const MqlRates &curr)
+  {
+   double low  = MathMin(prev.low, curr.low);
+   double high = MathMax(prev.high, curr.high);
+   double pad  = (high - low > 0.0) ? (high - low) * 0.20 : 10.0 * _Point;
+
+   int ps = PeriodSeconds(TradingTimeframe);
+   if(ps <= 0)
+      ps = PeriodSeconds(PERIOD_M1);
+   long off = (long)(0.1 * ps);
+   datetime t1 = prev.time - off;
+   datetime t2 = curr.time + ps + off;
+
+//--- rectangle around both candles
+   string rectName = MakeObjectName("ENGULFING_BUY_RECT", curr.time);
+   if(ObjectFind(0, rectName) < 0)
+      if(ObjectCreate(0, rectName, OBJ_RECTANGLE, 0, t1, low - pad, t2, high + pad) < 0)
+        { Print("[ERROR] Failed to create rectangle ", rectName); return; }
+   ObjectSetInteger(0, rectName, OBJPROP_COLOR, clrYellow);
+   ObjectSetInteger(0, rectName, OBJPROP_WIDTH, 1);
+   ObjectSetInteger(0, rectName, OBJPROP_STYLE, STYLE_SOLID);
+   ApplyObjectStyle(rectName);
+
+//--- BUY marker below the pattern
+   double markerPrice = low - pad * 1.5;
+   string markerName = MakeObjectName("ENGULFING_BUY_MARK", curr.time);
+   if(ObjectFind(0, markerName) < 0)
+      if(ObjectCreate(0, markerName, OBJ_ARROW, 0, (datetime)curr.time, markerPrice) < 0)
+        { Print("[ERROR] Failed to create marker ", markerName); return; }
+   ObjectSetInteger(0, markerName, OBJPROP_ARROWCODE, 233); // up arrow
+   ObjectSetInteger(0, markerName, OBJPROP_COLOR, clrYellow);
+   ObjectSetInteger(0, markerName, OBJPROP_WIDTH, 2);
+   ApplyObjectStyle(markerName);
+
+//--- text label
+   string textName = MakeObjectName("ENGULFING_BUY_TEXT", curr.time);
+   if(ObjectFind(0, textName) < 0)
+      if(ObjectCreate(0, textName, OBJ_TEXT, 0, (datetime)curr.time, markerPrice - pad * 0.3) < 0)
+        { Print("[ERROR] Failed to create text ", textName); return; }
+   ObjectSetString(0, textName, OBJPROP_TEXT, "BULLISH ENGULFING");
+   ObjectSetInteger(0, textName, OBJPROP_COLOR, clrYellow);
+   ObjectSetInteger(0, textName, OBJPROP_FONTSIZE, 8);
+   ObjectSetString(0, textName, OBJPROP_FONT, "Arial");
+   ObjectSetInteger(0, textName, OBJPROP_ANCHOR, ANCHOR_UPPER);
+   ApplyObjectStyle(textName);
+  }
+
+//+------------------------------------------------------------------+
+//| Bearish: yellow rectangle + down arrow + text, above the pattern |
+//+------------------------------------------------------------------+
+void DrawBearishEngulfing(const MqlRates &prev, const MqlRates &curr)
+  {
+   double low  = MathMin(prev.low, curr.low);
+   double high = MathMax(prev.high, curr.high);
+   double pad  = (high - low > 0.0) ? (high - low) * 0.20 : 10.0 * _Point;
+
+   int ps = PeriodSeconds(TradingTimeframe);
+   if(ps <= 0)
+      ps = PeriodSeconds(PERIOD_M1);
+   long off = (long)(0.1 * ps);
+   datetime t1 = prev.time - off;
+   datetime t2 = curr.time + ps + off;
+
+//--- rectangle around both candles
+   string rectName = MakeObjectName("ENGULFING_SELL_RECT", curr.time);
+   if(ObjectFind(0, rectName) < 0)
+      if(ObjectCreate(0, rectName, OBJ_RECTANGLE, 0, t1, low - pad, t2, high + pad) < 0)
+        { Print("[ERROR] Failed to create rectangle ", rectName); return; }
+   ObjectSetInteger(0, rectName, OBJPROP_COLOR, clrYellow);
+   ObjectSetInteger(0, rectName, OBJPROP_WIDTH, 1);
+   ObjectSetInteger(0, rectName, OBJPROP_STYLE, STYLE_SOLID);
+   ApplyObjectStyle(rectName);
+
+//--- SELL marker above the pattern
+   double markerPrice = high + pad * 1.5;
+   string markerName = MakeObjectName("ENGULFING_SELL_MARK", curr.time);
+   if(ObjectFind(0, markerName) < 0)
+      if(ObjectCreate(0, markerName, OBJ_ARROW, 0, (datetime)curr.time, markerPrice) < 0)
+        { Print("[ERROR] Failed to create marker ", markerName); return; }
+   ObjectSetInteger(0, markerName, OBJPROP_ARROWCODE, 234); // down arrow
+   ObjectSetInteger(0, markerName, OBJPROP_COLOR, clrYellow);
+   ObjectSetInteger(0, markerName, OBJPROP_WIDTH, 2);
+   ApplyObjectStyle(markerName);
+
+//--- text label
+   string textName = MakeObjectName("ENGULFING_SELL_TEXT", curr.time);
+   if(ObjectFind(0, textName) < 0)
+      if(ObjectCreate(0, textName, OBJ_TEXT, 0, (datetime)curr.time, markerPrice + pad * 0.3) < 0)
+        { Print("[ERROR] Failed to create text ", textName); return; }
+   ObjectSetString(0, textName, OBJPROP_TEXT, "BEARISH ENGULFING");
+   ObjectSetInteger(0, textName, OBJPROP_COLOR, clrYellow);
+   ObjectSetInteger(0, textName, OBJPROP_FONTSIZE, 8);
+   ObjectSetString(0, textName, OBJPROP_FONT, "Arial");
+   ObjectSetInteger(0, textName, OBJPROP_ANCHOR, ANCHOR_LOWER);
+   ApplyObjectStyle(textName);
+  }
+
+//+------------------------------------------------------------------+
+//| Trade information panel (Part 14)                                |
+//+------------------------------------------------------------------+
+void DrawTradeInformation(const ENUM_POSITION_TYPE dir, const double entry, const double sl,
+                          const double tp, const double atr, const double lot,
+                          const datetime signalBarTime, const bool success, const uint retcode)
+  {
+   if(!ShowTradeInfo)
+     { Comment(""); return; }
+   string s;
+   s  += "================ Pure Engulfing EA ================\n";
+   s  += "Signal        : " + (dir == POSITION_TYPE_BUY ? "BULLISH ENGULFING (BUY)"
+                               : "BEARISH ENGULFING (SELL)") + "\n";
+   s  += "Signal candle : " + TimeToString(signalBarTime, TIME_DATE|TIME_MINUTES) + "\n";
+   s  += "Direction     : " + (dir == POSITION_TYPE_BUY ? "BUY" : "SELL") + "\n";
+   s  += "Entry (last)  : " + DoubleToString(entry, _Digits) + "\n";
+   s  += "SL            : " + DoubleToString(sl, _Digits) + "\n";
+   s  += "TP            : " + DoubleToString(tp, _Digits) + "\n";
+   s  += "ATR           : " + DoubleToString(atr, _Digits) + "\n";
+   s  += "Lot size      : " + DoubleToString(lot, 2) + "\n";
+   s  += "Risk          : " + DoubleToString(RiskPercent, 2) + "% of equity = $ "
+         + DoubleToString(AccountInfoDouble(ACCOUNT_EQUITY) * RiskPercent / 100.0, 2) + "\n";
+   s  += "Result        : " + (success ? "OPENED"
+                               : "REJECTED (retcode=" + IntegerToString(retcode) + ")") + "\n";
+   s  += "====================================================\n";
+   Comment(s);
+  }
+//+------------------------------------------------------------------+
