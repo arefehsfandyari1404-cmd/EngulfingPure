@@ -1,0 +1,329 @@
+2026.09.20 22:37:02.566	Terminal	MetaTrader 5 x64 build 6182 started for MetaQuotes Ltd.
+2026.09.20 22:37:02.574	Terminal	Windows 12 build 28000, 8 x Intel Core i7-4710HQ  @ 2.50GHz, AVX2, 5 / 11 Gb memory, 339 / 407 Gb disk, UAC, GMT+3
+2026.09.20 22:37:02.574	Terminal	C:\Users\moham\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075
+2026.09.20 22:37:02.587	MCP	started on 127.0.0.1:22346
+2026.09.20 22:37:05.752	Network	'53146866': authorized on Alpari-MT5-Demo through MT5-Demo.Europe.5 (ping: 188.85 ms, build 6090)
+2026.09.20 22:37:05.752	Network	'53146866': previous successful authorization performed from 45.83.180.53 on 2026.09.15 22:45:58
+2026.09.20 22:37:07.180	Network	'53146866': terminal synchronized with Alpari: 0 positions, 0 orders, 879 symbols, 0 spreads
+2026.09.20 22:37:07.180	Network	'53146866': trading has been enabled, demo account - hedging mode
+2026.09.20 22:37:07.180	Network	'53146866': balance management has been disabled - demo account
+2026.09.20 22:37:09.042	Network	'53146866': scanning network for access points
+2026.09.20 22:37:42.736	Network	'53146866': scanning network finished
+2026.09.20 22:37:42.736	Network	'53146866': auto connecting to a better access point with 90 % quality (previous: 74 %)
+2026.09.20 22:37:42.739	Network	'53146866': connection to Alpari-MT5-Demo lost
+2026.09.20 22:37:43.889	Network	'53146866': authorized on Alpari-MT5-Demo through MT5-Demo.Asia.13 (ping: 136.99 ms, build 6090)
+2026.09.20 22:37:43.889	Network	'53146866': previous successful authorization performed from 2.145.146.142 on 2026.09.20 22:07:05
+2026.09.20 22:37:44.846	Network	'53146866': terminal synchronized with Alpari: 0 positions, 0 orders, 879 symbols, 0 spreads
+2026.09.20 22:37:44.846	Network	'53146866': trading has been enabled, demo account - hedging mode
+2026.09.20 22:37:44.846	Network	'53146866': balance management has been disabled - demo account
+2026.09.21 15:15:28.737	Network	'53146866': connection to Alpari-MT5-Demo lost
+2026.09.21 15:15:45.027	Network	'53146866': authorized on Alpari-MT5-Demo through MT5-Demo.Asia.7 (ping: 143.27 ms, build 6090)
+2026.09.21 15:15:45.027	Network	'53146866': previous successful authorization performed from 2.145.146.142 on 2026.09.20 22:07:44
+2026.09.21 15:16:22.128	Network	'53146866': terminal synchronized with Alpari: 0 positions, 0 orders, 879 symbols, 0 spreads
+2026.09.21 15:16:22.128	Network	'53146866': trading has been enabled, demo account - hedging mode
+2026.09.21 15:16:22.128	Network	'53146866': balance management has been disabled - demo account
+2026.09.21 15:16:23.927	Network	'53146866': scanning network for access points
+2026.09.21 15:17:01.964	Network	'53146866': scanning network finished
+2026.09.21 15:17:01.964	Network	'53146866': auto connecting to a better access point with 89 % quality (previous: 84 %)
+2026.09.21 15:17:01.965	Network	'53146866': connection to Alpari-MT5-Demo lost
+2026.09.21 15:17:04.165	Network	'53146866': authorized on Alpari-MT5-Demo through MT5-Demo.Asia.13 (ping: 148.22 ms, build 6090)
+2026.09.21 15:17:04.165	Network	'53146866': previous successful authorization performed from 2.145.10.145 on 2026.09.21 14:45:41
+2026.09.21 15:17:05.414	Network	'53146866': terminal synchronized with Alpari: 0 positions, 0 orders, 879 symbols, 0 spreads
+2026.09.21 15:17:05.414	Network	'53146866': trading has been enabled, demo account - hedging mode
+2026.09.21 15:17:05.414	Network	'53146866': balance management has been disabled - demo account
+2026.09.22 21:23:04.554	Network	'53146866': connection to Alpari-MT5-Demo lost
+2026.09.22 21:23:21.357	Network	'53146866': authorized on Alpari-MT5-Demo through MT5-Demo.Asia.8 (ping: 287.66 ms, build 6090)
+2026.09.22 21:23:21.357	Network	'53146866': previous successful authorization performed from 2.145.10.145 on 2026.09.21 14:47:03
+2026.09.22 21:24:18.535	Alpari-MT5-Demo	'53146866': error sending synchronization command
+2026.09.22 21:24:28.529	Network	'53146866': authorized on Alpari-MT5-Demo through MT5-Demo.Asia.7 (ping: 322.19 ms, build 6090)
+2026.09.22 21:24:28.529	Network	'53146866': previous successful authorization performed from 2.145.10.145 on 2026.09.22 20:53:11
+2026.09.22 21:24:55.664	Network	'53146866': terminal synchronized with Alpari: 0 positions, 0 orders, 879 symbols, 0 spreads
+2026.09.22 21:24:55.664	Network	'53146866': trading has been enabled, demo account - hedging mode
+2026.09.22 21:24:55.664	Network	'53146866': balance management has been disabled - demo account
+2026.09.22 21:24:57.093	Network	'53146866': scanning network for access points
+2026.09.22 21:25:34.172	Network	'53146866': scanning network finished
+2026.09.22 21:31:38.519	Network	'53146866': connection to Alpari-MT5-Demo lost
+2026.09.22 21:31:50.096	Network	'53146866': authorized on Alpari-MT5-Demo through MT5-Demo.Asia.7 (ping: 143.59 ms, build 6090)
+2026.09.22 21:31:50.096	Network	'53146866': previous successful authorization performed from 2.145.10.145 on 2026.09.22 20:54:22
+2026.09.22 21:31:56.559	Network	'53146866': terminal synchronized with Alpari: 0 positions, 0 orders, 879 symbols, 0 spreads
+2026.09.22 21:31:56.559	Network	'53146866': trading has been enabled, demo account - hedging mode
+2026.09.22 21:31:56.559	Network	'53146866': balance management has been disabled - demo account
+2026.09.22 22:26:28.466	MQL5 debugger	connected
+2026.09.22 22:26:28.698	Experts	expert EngulfingPurewith-mamad-kavian (XAUUSD,H1) loaded successfully
+2026.09.22 22:26:31.841	MQL5 debugger	disconnected
+2026.09.22 22:26:49.621	Broker	Alpari-MT5: no demo/preliminary groups on server side
+2026.09.22 22:27:05.223	Network	new demo account '53171390' opened on Alpari-MT5-Demo
+2026.09.22 22:27:08.186	Network	'53146866': disconnected from Alpari-MT5-Demo
+2026.09.22 22:27:10.136	Experts	automated trading is disabled because the account has been changed
+2026.09.22 22:27:12.180	Network	'53171390': authorized on Alpari-MT5-Demo through MT5-Demo.Asia.7
+2026.09.22 22:27:12.180	Network	'53171390': previous successful authorization performed from 2.145.10.145 on 2026.09.22 21:57:02
+2026.09.23 05:05:44.302	Network	'53171390': scanning network for access points
+2026.09.23 05:06:17.099	Network	'53171390': scanning network finished
+2026.09.24 20:49:00.516	Network	'53171390': connection to Alpari-MT5-Demo lost
+2026.09.24 20:49:07.612	MQL5.community	authorization failed
+2026.09.24 20:54:01.973	MQL5.community	authorization failed
+2026.09.24 20:59:02.292	MQL5.community	authorization failed
+2026.09.24 21:04:01.546	MQL5.community	authorization failed
+2026.09.24 21:09:01.997	MQL5.community	authorization failed
+2026.09.24 21:14:02.299	MQL5.community	authorization failed
+2026.09.24 21:19:01.700	MQL5.community	authorization failed
+2026.09.24 21:24:01.972	MQL5.community	authorization failed
+2026.09.24 21:29:02.072	MQL5.community	authorization failed
+2026.09.24 21:34:01.410	MQL5.community	authorization failed
+2026.09.24 21:39:01.644	MQL5.community	authorization failed
+2026.09.24 21:44:02.029	MQL5.community	authorization failed
+2026.09.24 21:49:02.213	MQL5.community	authorization failed
+2026.09.24 21:49:09.590	Experts	automated trading is enabled
+2026.09.24 21:50:22.423	Network	'53171390': connecting to an access point with 0 % quality (previous: 0 %)
+2026.09.24 21:50:25.355	Network	'53171390': authorized on Alpari-MT5-Demo through MT5-Demo.Asia.13 (ping: 144.72 ms, build 6090)
+2026.09.24 21:50:25.355	Network	'53171390': previous successful authorization performed from 2.145.10.145 on 2026.09.23 04:35:30
+2026.09.24 21:50:27.371	Network	'53171390': terminal synchronized with Alpari: 0 positions, 0 orders, 879 symbols, 0 spreads
+2026.09.24 21:50:27.371	Network	'53171390': trading has been enabled, demo account - hedging mode
+2026.09.24 21:50:27.371	Network	'53171390': balance management has been disabled - demo account
+2026.09.24 21:50:28.257	Network	'53171390': scanning network for access points
+2026.09.24 21:51:02.020	Network	'53171390': scanning network finished
+2026.09.24 21:56:01.647	Trades	'53171390': market buy 2 XAUUSD sl: 4267.57 tp: 4282.56
+2026.09.24 21:56:01.815	Trades	'53171390': accepted market buy 2 XAUUSD sl: 4267.57 tp: 4282.56
+2026.09.24 21:56:01.853	Trades	'53171390': deal #338389626 buy 2 XAUUSD at 4272.63 done (based on order #381789923)
+2026.09.24 21:56:01.860	Trades	'53171390': order #381789923 buy 2 / 2 XAUUSD at 4272.63 done in 213.656 ms
+2026.09.24 22:09:00.731	Trades	'53171390': modify #381789923 buy 2 XAUUSD sl: 4267.57, tp: 4282.56 -> sl: 4275.52, tp: 4282.56
+2026.09.24 22:09:00.926	Trades	'53171390': accepted modify #381789923 buy 2 XAUUSD sl: 4267.57, tp: 4282.56 -> sl: 4275.52, tp: 4282.56
+2026.09.24 22:09:00.936	Trades	'53171390': modify #381789923 buy 2 XAUUSD -> sl: 4275.52, tp: 4282.56 done in 205.659 ms
+2026.09.24 22:09:00.988	Trades	'53171390': modify #381789923 buy 2 XAUUSD sl: 4275.52, tp: 4282.56 -> sl: 4275.59, tp: 4282.56
+2026.09.24 22:09:01.143	Trades	'53171390': accepted modify #381789923 buy 2 XAUUSD sl: 4275.52, tp: 4282.56 -> sl: 4275.59, tp: 4282.56
+2026.09.24 22:09:01.159	Trades	'53171390': modify #381789923 buy 2 XAUUSD -> sl: 4275.59, tp: 4282.56 done in 171.182 ms
+2026.09.24 22:09:02.831	Trades	'53171390': modify #381789923 buy 2 XAUUSD sl: 4275.59, tp: 4282.56 -> sl: 4275.96, tp: 4282.56
+2026.09.24 22:09:03.005	Trades	'53171390': accepted modify #381789923 buy 2 XAUUSD sl: 4275.59, tp: 4282.56 -> sl: 4275.96, tp: 4282.56
+2026.09.24 22:09:03.006	Trades	'53171390': modify #381789923 buy 2 XAUUSD -> sl: 4275.96, tp: 4282.56 done in 174.483 ms
+2026.09.24 22:09:04.163	Trades	'53171390': modify #381789923 buy 2 XAUUSD sl: 4275.96, tp: 4282.56 -> sl: 4276.04, tp: 4282.56
+2026.09.24 22:09:06.071	Trades	'53171390': accepted modify #381789923 buy 2 XAUUSD sl: 4275.96, tp: 4282.56 -> sl: 4276.04, tp: 4282.56
+2026.09.24 22:09:06.088	Trades	'53171390': modify #381789923 buy 2 XAUUSD -> sl: 4276.04, tp: 4282.56 done in 1924.837 ms
+2026.09.24 22:09:06.238	Trades	'53171390': modify #381789923 buy 2 XAUUSD sl: 4276.04, tp: 4282.56 -> sl: 4277.32, tp: 4282.56
+2026.09.24 22:09:06.427	Trades	'53171390': accepted modify #381789923 buy 2 XAUUSD sl: 4276.04, tp: 4282.56 -> sl: 4277.32, tp: 4282.56
+2026.09.24 22:09:06.470	Trades	'53171390': modify #381789923 buy 2 XAUUSD -> sl: 4277.32, tp: 4282.56 done in 232.838 ms
+2026.09.24 22:09:06.602	Trades	'53171390': modify #381789923 buy 2 XAUUSD sl: 4277.32, tp: 4282.56 -> sl: 4278.15, tp: 4282.56
+2026.09.24 22:09:06.770	Trades	'53171390': accepted modify #381789923 buy 2 XAUUSD sl: 4277.32, tp: 4282.56 -> sl: 4278.15, tp: 4282.56
+2026.09.24 22:09:06.791	Trades	'53171390': modify #381789923 buy 2 XAUUSD -> sl: 4278.15, tp: 4282.56 done in 189.311 ms
+2026.09.24 22:09:07.117	Trades	'53171390': modify #381789923 buy 2 XAUUSD sl: 4278.15, tp: 4282.56 -> sl: 4278.23, tp: 4282.56
+2026.09.24 22:09:07.286	Trades	'53171390': accepted modify #381789923 buy 2 XAUUSD sl: 4278.15, tp: 4282.56 -> sl: 4278.23, tp: 4282.56
+2026.09.24 22:09:07.308	Trades	'53171390': modify #381789923 buy 2 XAUUSD -> sl: 4278.23, tp: 4282.56 done in 191.613 ms
+2026.09.24 22:09:07.338	Trades	'53171390': modify #381789923 buy 2 XAUUSD sl: 4278.23, tp: 4282.56 -> sl: 4278.76, tp: 4282.56
+2026.09.24 22:09:07.490	Trades	'53171390': accepted modify #381789923 buy 2 XAUUSD sl: 4278.23, tp: 4282.56 -> sl: 4278.76, tp: 4282.56
+2026.09.24 22:09:07.516	Trades	'53171390': modify #381789923 buy 2 XAUUSD -> sl: 4278.76, tp: 4282.56 done in 178.173 ms
+2026.09.24 22:09:10.128	Trades	'53171390': modify #381789923 buy 2 XAUUSD sl: 4278.76, tp: 4282.56 -> sl: 4278.61, tp: 4282.56
+2026.09.24 22:09:10.172	Trades	'53171390': deal #338397154 sell 2 XAUUSD at 4278.58 done (based on order #381797647)
+2026.09.24 22:09:10.296	Trades	'53171390': failed modify #0 buy 0  sl: 0.00, tp: 0.00 -> sl: 4278.61, tp: 4282.56 [Position doesn't exist]
+2026.09.24 22:28:01.628	Trades	'53171390': market sell 2 XAUUSD sl: 4275.63 tp: 4268.52
+2026.09.24 22:28:01.799	Trades	'53171390': accepted market sell 2 XAUUSD sl: 4275.63 tp: 4268.52
+2026.09.24 22:28:01.834	Trades	'53171390': deal #338405196 sell 2 XAUUSD at 4273.21 done (based on order #381806062)
+2026.09.24 22:28:01.835	Trades	'53171390': order #381806062 sell 2 / 2 XAUUSD at 4273.21 done in 207.089 ms
+2026.09.24 22:31:07.906	Trades	'53171390': modify #381806062 sell 2 XAUUSD sl: 4275.63, tp: 4268.52 -> sl: 4272.91, tp: 4268.52
+2026.09.24 22:31:08.104	Trades	'53171390': accepted modify #381806062 sell 2 XAUUSD sl: 4275.63, tp: 4268.52 -> sl: 4272.91, tp: 4268.52
+2026.09.24 22:31:08.112	Trades	'53171390': modify #381806062 sell 2 XAUUSD -> sl: 4272.91, tp: 4268.52 done in 206.930 ms
+2026.09.24 22:31:23.957	Trades	'53171390': modify #381806062 sell 2 XAUUSD sl: 4272.91, tp: 4268.52 -> sl: 4272.83, tp: 4268.52
+2026.09.24 22:31:24.124	Trades	'53171390': accepted modify #381806062 sell 2 XAUUSD sl: 4272.91, tp: 4268.52 -> sl: 4272.83, tp: 4268.52
+2026.09.24 22:31:24.138	Trades	'53171390': modify #381806062 sell 2 XAUUSD -> sl: 4272.83, tp: 4268.52 done in 180.600 ms
+2026.09.24 22:31:25.413	Trades	'53171390': modify #381806062 sell 2 XAUUSD sl: 4272.83, tp: 4268.52 -> sl: 4272.62, tp: 4268.52
+2026.09.24 22:31:25.738	Trades	'53171390': accepted modify #381806062 sell 2 XAUUSD sl: 4272.83, tp: 4268.52 -> sl: 4272.62, tp: 4268.52
+2026.09.24 22:31:25.739	Trades	'53171390': modify #381806062 sell 2 XAUUSD -> sl: 4272.62, tp: 4268.52 done in 326.220 ms
+2026.09.24 22:31:27.065	Trades	'53171390': modify #381806062 sell 2 XAUUSD sl: 4272.62, tp: 4268.52 -> sl: 4272.30, tp: 4268.52
+2026.09.24 22:31:27.232	Trades	'53171390': accepted modify #381806062 sell 2 XAUUSD sl: 4272.62, tp: 4268.52 -> sl: 4272.30, tp: 4268.52
+2026.09.24 22:31:27.235	Trades	'53171390': modify #381806062 sell 2 XAUUSD -> sl: 4272.30, tp: 4268.52 done in 169.560 ms
+2026.09.24 22:31:31.336	Trades	'53171390': deal #338406967 buy 2 XAUUSD at 4272.58 done (based on order #381807990)
+2026.09.24 22:37:01.506	Trades	'53171390': market buy 2 XAUUSD sl: 4267.26 tp: 4273.56
+2026.09.24 22:37:01.724	Trades	'53171390': accepted market buy 2 XAUUSD sl: 4267.26 tp: 4273.56
+2026.09.24 22:37:01.755	Trades	'53171390': deal #338409766 buy 2 XAUUSD at 4269.31 done (based on order #381810861)
+2026.09.24 22:37:01.756	Trades	'53171390': order #381810861 buy 2 / 2 XAUUSD at 4269.31 done in 250.206 ms
+2026.09.24 22:50:02.622	Trades	'53171390': modify #381810861 buy 2 XAUUSD sl: 4267.26, tp: 4273.56 -> sl: 4269.98, tp: 4273.56
+2026.09.24 22:50:02.767	Trades	'53171390': accepted modify #381810861 buy 2 XAUUSD sl: 4267.26, tp: 4273.56 -> sl: 4269.98, tp: 4273.56
+2026.09.24 22:50:02.778	Trades	'53171390': modify #381810861 buy 2 XAUUSD -> sl: 4269.98, tp: 4273.56 done in 156.030 ms
+2026.09.24 22:50:05.310	Trades	'53171390': modify #381810861 buy 2 XAUUSD sl: 4269.98, tp: 4273.56 -> sl: 4270.19, tp: 4273.56
+2026.09.24 22:50:05.612	Trades	'53171390': accepted modify #381810861 buy 2 XAUUSD sl: 4269.98, tp: 4273.56 -> sl: 4270.19, tp: 4273.56
+2026.09.24 22:50:05.616	Trades	'53171390': modify #381810861 buy 2 XAUUSD -> sl: 4270.19, tp: 4273.56 done in 306.739 ms
+2026.09.24 22:50:14.076	Trades	'53171390': deal #338413775 sell 2 XAUUSD at 4270.11 done (based on order #381814968)
+2026.09.24 22:51:01.566	Trades	'53171390': market sell 2 XAUUSD sl: 4272.26 tp: 4264.39
+2026.09.24 22:51:01.750	Trades	'53171390': accepted market sell 2 XAUUSD sl: 4272.26 tp: 4264.39
+2026.09.24 22:51:01.777	Trades	'53171390': deal #338413956 sell 2 XAUUSD at 4269.59 done (based on order #381815157)
+2026.09.24 22:51:01.782	Trades	'53171390': order #381815157 sell 2 / 2 XAUUSD at 4269.59 done in 216.820 ms
+2026.09.24 22:53:45.953	Trades	'53171390': deal #338414321 buy 2 XAUUSD at 4272.61 done (based on order #381815550)
+2026.09.24 23:02:01.519	Trades	'53171390': market buy 2 XAUUSD sl: 4270.82 tp: 4277.69
+2026.09.24 23:02:01.683	Trades	'53171390': accepted market buy 2 XAUUSD sl: 4270.82 tp: 4277.69
+2026.09.24 23:02:01.724	Trades	'53171390': deal #338416861 buy 2 XAUUSD at 4273.16 done (based on order #381818159)
+2026.09.24 23:02:01.724	Trades	'53171390': order #381818159 buy 2 / 2 XAUUSD at 4273.16 done in 205.058 ms
+2026.09.24 23:09:48.398	Trades	'53171390': modify #381818159 buy 2 XAUUSD sl: 4270.82, tp: 4277.69 -> sl: 4274.02, tp: 4277.69
+2026.09.24 23:09:48.578	Trades	'53171390': accepted modify #381818159 buy 2 XAUUSD sl: 4270.82, tp: 4277.69 -> sl: 4274.02, tp: 4277.69
+2026.09.24 23:09:48.590	Trades	'53171390': modify #381818159 buy 2 XAUUSD -> sl: 4274.02, tp: 4277.69 done in 192.428 ms
+2026.09.24 23:09:52.576	Trades	'53171390': modify #381818159 buy 2 XAUUSD sl: 4274.02, tp: 4277.69 -> sl: 4274.12, tp: 4277.69
+2026.09.24 23:09:52.742	Trades	'53171390': accepted modify #381818159 buy 2 XAUUSD sl: 4274.02, tp: 4277.69 -> sl: 4274.12, tp: 4277.69
+2026.09.24 23:09:52.752	Trades	'53171390': modify #381818159 buy 2 XAUUSD -> sl: 4274.12, tp: 4277.69 done in 176.020 ms
+2026.09.24 23:10:22.579	Trades	'53171390': modify #381818159 buy 2 XAUUSD sl: 4274.12, tp: 4277.69 -> sl: 4274.20, tp: 4277.69
+2026.09.24 23:10:22.744	Trades	'53171390': accepted modify #381818159 buy 2 XAUUSD sl: 4274.12, tp: 4277.69 -> sl: 4274.20, tp: 4277.69
+2026.09.24 23:10:22.756	Trades	'53171390': modify #381818159 buy 2 XAUUSD -> sl: 4274.20, tp: 4277.69 done in 177.562 ms
+2026.09.24 23:10:40.275	Trades	'53171390': deal #338419110 sell 2 XAUUSD at 4274.10 done (based on order #381820469)
+2026.09.24 23:15:01.531	Trades	'53171390': market sell 2 XAUUSD sl: 4276.35 tp: 4270.17
+2026.09.24 23:15:01.706	Trades	'53171390': accepted market sell 2 XAUUSD sl: 4276.35 tp: 4270.17
+2026.09.24 23:15:01.749	Trades	'53171390': deal #338420602 sell 2 XAUUSD at 4274.24 done (based on order #381822013)
+2026.09.24 23:15:01.749	Trades	'53171390': order #381822013 sell 2 / 2 XAUUSD at 4274.24 done in 218.505 ms
+2026.09.24 23:32:38.037	Trades	'53171390': modify #381822013 sell 2 XAUUSD sl: 4276.35, tp: 4270.17 -> sl: 4273.42, tp: 4270.17
+2026.09.24 23:32:38.234	Trades	'53171390': accepted modify #381822013 sell 2 XAUUSD sl: 4276.35, tp: 4270.17 -> sl: 4273.42, tp: 4270.17
+2026.09.24 23:32:38.256	Trades	'53171390': modify #381822013 sell 2 XAUUSD -> sl: 4273.42, tp: 4270.17 done in 218.738 ms
+2026.09.24 23:32:38.296	Trades	'53171390': modify #381822013 sell 2 XAUUSD sl: 4273.42, tp: 4270.17 -> sl: 4273.32, tp: 4270.17
+2026.09.24 23:32:38.506	Trades	'53171390': accepted modify #381822013 sell 2 XAUUSD sl: 4273.42, tp: 4270.17 -> sl: 4273.32, tp: 4270.17
+2026.09.24 23:32:38.509	Trades	'53171390': modify #381822013 sell 2 XAUUSD -> sl: 4273.32, tp: 4270.17 done in 213.495 ms
+2026.09.24 23:32:42.357	Trades	'53171390': modify #381822013 sell 2 XAUUSD sl: 4273.32, tp: 4270.17 -> sl: 4273.24, tp: 4270.17
+2026.09.24 23:32:42.606	Trades	'53171390': accepted modify #381822013 sell 2 XAUUSD sl: 4273.32, tp: 4270.17 -> sl: 4273.24, tp: 4270.17
+2026.09.24 23:32:42.611	Trades	'53171390': modify #381822013 sell 2 XAUUSD -> sl: 4273.24, tp: 4270.17 done in 253.931 ms
+2026.09.24 23:33:31.038	Trades	'53171390': modify #381822013 sell 2 XAUUSD sl: 4273.24, tp: 4270.17 -> sl: 4273.18, tp: 4270.17
+2026.09.24 23:33:31.242	Trades	'53171390': accepted modify #381822013 sell 2 XAUUSD sl: 4273.24, tp: 4270.17 -> sl: 4273.18, tp: 4270.17
+2026.09.24 23:33:31.243	Trades	'53171390': modify #381822013 sell 2 XAUUSD -> sl: 4273.18, tp: 4270.17 done in 205.597 ms
+2026.09.24 23:33:31.517	Trades	'53171390': modify #381822013 sell 2 XAUUSD sl: 4273.18, tp: 4270.17 -> sl: 4273.01, tp: 4270.17
+2026.09.24 23:33:31.724	Trades	'53171390': accepted modify #381822013 sell 2 XAUUSD sl: 4273.18, tp: 4270.17 -> sl: 4273.01, tp: 4270.17
+2026.09.24 23:33:31.725	Trades	'53171390': modify #381822013 sell 2 XAUUSD -> sl: 4273.01, tp: 4270.17 done in 207.749 ms
+2026.09.24 23:34:00.064	Trades	'53171390': deal #338426125 buy 2 XAUUSD at 4273.09 done (based on order #381827796)
+2026.09.24 23:41:01.671	Trades	'53171390': market buy 2 XAUUSD sl: 4269.59 tp: 4277.32
+2026.09.24 23:41:01.832	Trades	'53171390': accepted market buy 2 XAUUSD sl: 4269.59 tp: 4277.32
+2026.09.24 23:41:01.850	Trades	'53171390': deal #338428070 buy 2 XAUUSD at 4272.21 done (based on order #381829918)
+2026.09.24 23:41:01.855	Trades	'53171390': order #381829918 buy 2 / 2 XAUUSD at 4272.21 done in 184.857 ms
+2026.09.24 23:45:44.392	Trades	'53171390': deal #338429148 sell 2 XAUUSD at 4269.33 done (based on order #381831086)
+2026.09.24 23:52:01.502	Trades	'53171390': market buy 2 XAUUSD sl: 4263.99 tp: 4269.99
+2026.09.24 23:52:01.876	Trades	'53171390': accepted market buy 2 XAUUSD sl: 4263.99 tp: 4269.99
+2026.09.24 23:52:01.878	Trades	'53171390': deal #338431033 buy 2 XAUUSD at 4266.05 done (based on order #381832973)
+2026.09.24 23:52:01.878	Trades	'53171390': order #381832973 buy 2 / 2 XAUUSD at 4266.05 done in 377.207 ms
+2026.09.25 00:08:57.733	Trades	'53171390': modify #381832973 buy 2 XAUUSD sl: 4263.99, tp: 4269.99 -> sl: 4267.04, tp: 4269.99
+2026.09.25 00:08:57.979	Trades	'53171390': accepted modify #381832973 buy 2 XAUUSD sl: 4263.99, tp: 4269.99 -> sl: 4267.04, tp: 4269.99
+2026.09.25 00:08:58.001	Trades	'53171390': modify #381832973 buy 2 XAUUSD -> sl: 4267.04, tp: 4269.99 done in 267.838 ms
+2026.09.25 00:09:00.838	Trades	'53171390': modify #381832973 buy 2 XAUUSD sl: 4267.04, tp: 4269.99 -> sl: 4267.14, tp: 4269.99
+2026.09.25 00:09:01.053	Trades	'53171390': accepted modify #381832973 buy 2 XAUUSD sl: 4267.04, tp: 4269.99 -> sl: 4267.14, tp: 4269.99
+2026.09.25 00:09:01.059	Trades	'53171390': modify #381832973 buy 2 XAUUSD -> sl: 4267.14, tp: 4269.99 done in 222.091 ms
+2026.09.25 00:09:16.892	Trades	'53171390': modify #381832973 buy 2 XAUUSD sl: 4267.14, tp: 4269.99 -> sl: 4267.34, tp: 4269.99
+2026.09.25 00:09:17.050	Trades	'53171390': accepted modify #381832973 buy 2 XAUUSD sl: 4267.14, tp: 4269.99 -> sl: 4267.34, tp: 4269.99
+2026.09.25 00:09:17.064	Trades	'53171390': modify #381832973 buy 2 XAUUSD -> sl: 4267.34, tp: 4269.99 done in 172.313 ms
+2026.09.25 00:09:33.377	Trades	'53171390': modify #381832973 buy 2 XAUUSD sl: 4267.34, tp: 4269.99 -> sl: 4267.43, tp: 4269.99
+2026.09.25 00:09:33.544	Trades	'53171390': accepted modify #381832973 buy 2 XAUUSD sl: 4267.34, tp: 4269.99 -> sl: 4267.43, tp: 4269.99
+2026.09.25 00:09:33.551	Trades	'53171390': modify #381832973 buy 2 XAUUSD -> sl: 4267.43, tp: 4269.99 done in 175.023 ms
+2026.09.25 00:09:38.419	Trades	'53171390': modify #381832973 buy 2 XAUUSD sl: 4267.43, tp: 4269.99 -> sl: 4267.49, tp: 4269.99
+2026.09.25 00:09:38.598	Trades	'53171390': accepted modify #381832973 buy 2 XAUUSD sl: 4267.43, tp: 4269.99 -> sl: 4267.49, tp: 4269.99
+2026.09.25 00:09:38.603	Trades	'53171390': modify #381832973 buy 2 XAUUSD -> sl: 4267.49, tp: 4269.99 done in 184.806 ms
+2026.09.25 00:09:51.889	Trades	'53171390': modify #381832973 buy 2 XAUUSD sl: 4267.49, tp: 4269.99 -> sl: 4267.54, tp: 4269.99
+2026.09.25 00:09:52.090	Trades	'53171390': accepted modify #381832973 buy 2 XAUUSD sl: 4267.49, tp: 4269.99 -> sl: 4267.54, tp: 4269.99
+2026.09.25 00:09:52.091	Trades	'53171390': modify #381832973 buy 2 XAUUSD -> sl: 4267.54, tp: 4269.99 done in 203.005 ms
+2026.09.25 00:09:58.402	Trades	'53171390': modify #381832973 buy 2 XAUUSD sl: 4267.54, tp: 4269.99 -> sl: 4267.65, tp: 4269.99
+2026.09.25 00:09:58.570	Trades	'53171390': accepted modify #381832973 buy 2 XAUUSD sl: 4267.54, tp: 4269.99 -> sl: 4267.65, tp: 4269.99
+2026.09.25 00:09:58.575	Trades	'53171390': modify #381832973 buy 2 XAUUSD -> sl: 4267.65, tp: 4269.99 done in 172.434 ms
+2026.09.25 00:09:59.482	Trades	'53171390': modify #381832973 buy 2 XAUUSD sl: 4267.65, tp: 4269.99 -> sl: 4267.79, tp: 4269.99
+2026.09.25 00:09:59.633	Trades	'53171390': accepted modify #381832973 buy 2 XAUUSD sl: 4267.65, tp: 4269.99 -> sl: 4267.79, tp: 4269.99
+2026.09.25 00:09:59.647	Trades	'53171390': modify #381832973 buy 2 XAUUSD -> sl: 4267.79, tp: 4269.99 done in 164.877 ms
+2026.09.25 00:10:01.581	Trades	'53171390': modify #381832973 buy 2 XAUUSD sl: 4267.79, tp: 4269.99 -> sl: 4267.97, tp: 4269.99
+2026.09.25 00:10:01.884	Trades	'53171390': accepted modify #381832973 buy 2 XAUUSD sl: 4267.79, tp: 4269.99 -> sl: 4267.97, tp: 4269.99
+2026.09.25 00:10:01.886	Trades	'53171390': modify #381832973 buy 2 XAUUSD -> sl: 4267.97, tp: 4269.99 done in 305.777 ms
+2026.09.25 00:10:19.873	Trades	'53171390': modify #381832973 buy 2 XAUUSD sl: 4267.97, tp: 4269.99 -> sl: 4268.49, tp: 4269.99
+2026.09.25 00:10:20.035	Trades	'53171390': accepted modify #381832973 buy 2 XAUUSD sl: 4267.97, tp: 4269.99 -> sl: 4268.49, tp: 4269.99
+2026.09.25 00:10:20.041	Trades	'53171390': modify #381832973 buy 2 XAUUSD -> sl: 4268.49, tp: 4269.99 done in 168.684 ms
+2026.09.25 00:10:20.142	Trades	'53171390': modify #381832973 buy 2 XAUUSD sl: 4268.49, tp: 4269.99 -> sl: 4268.68, tp: 4269.99
+2026.09.25 00:10:20.322	Trades	'53171390': accepted modify #381832973 buy 2 XAUUSD sl: 4268.49, tp: 4269.99 -> sl: 4268.68, tp: 4269.99
+2026.09.25 00:10:20.325	Trades	'53171390': modify #381832973 buy 2 XAUUSD -> sl: 4268.68, tp: 4269.99 done in 183.500 ms
+2026.09.25 00:10:20.697	Trades	'53171390': deal #338434012 sell 2 XAUUSD at 4269.99 done (based on order #381836105)
+2026.09.25 00:23:01.514	Trades	'53171390': market sell 2 XAUUSD sl: 4273.05 tp: 4268.83
+2026.09.25 00:23:01.921	Trades	'53171390': accepted market sell 2 XAUUSD sl: 4273.05 tp: 4268.83
+2026.09.25 00:23:01.925	Trades	'53171390': deal #338436341 sell 2 XAUUSD at 4271.95 done (based on order #381838611)
+2026.09.25 00:23:01.926	Trades	'53171390': order #381838611 sell 2 / 2 XAUUSD at 4271.95 done in 412.238 ms
+2026.09.25 00:24:36.591	Trades	'53171390': deal #338436543 buy 2 XAUUSD at 4273.11 done (based on order #381838849)
+2026.09.25 01:31:43.596	Network	'53171390': connection to Alpari-MT5-Demo lost
+2026.09.25 01:31:47.609	Network	'53171390': authorized on Alpari-MT5-Demo through MT5-Demo.Asia.15 (ping: 164.92 ms, build 6090)
+2026.09.25 01:31:47.609	Network	'53171390': previous successful authorization performed from 2.145.94.42 on 2026.09.24 21:20:23
+2026.09.25 01:31:48.460	Network	'53171390': terminal synchronized with Alpari: 0 positions, 0 orders, 879 symbols, 0 spreads
+2026.09.25 01:31:48.460	Network	'53171390': trading has been enabled, demo account - hedging mode
+2026.09.25 01:31:48.460	Network	'53171390': balance management has been disabled - demo account
+2026.09.25 01:31:50.315	Network	'53171390': scanning network for access points
+2026.09.25 01:32:25.530	Network	'53171390': scanning network finished
+2026.09.25 01:39:01.470	Trades	'53171390': market sell 2 XAUUSD sl: 4273.86 tp: 4269.73
+2026.09.25 01:39:01.713	Trades	'53171390': accepted market sell 2 XAUUSD sl: 4273.86 tp: 4269.73
+2026.09.25 01:39:01.725	Trades	'53171390': deal #338439601 sell 2 XAUUSD at 4272.42 done (based on order #381841886)
+2026.09.25 01:39:01.749	Trades	'53171390': order #381841886 sell 2 / 2 XAUUSD at 4272.42 done in 279.010 ms
+2026.09.25 01:40:15.832	Trades	'53171390': modify #381841886 sell 2 XAUUSD sl: 4273.86, tp: 4269.73 -> sl: 4272.27, tp: 4269.73
+2026.09.25 01:40:16.192	Trades	'53171390': accepted modify #381841886 sell 2 XAUUSD sl: 4273.86, tp: 4269.73 -> sl: 4272.27, tp: 4269.73
+2026.09.25 01:40:16.197	Trades	'53171390': modify #381841886 sell 2 XAUUSD -> sl: 4272.27, tp: 4269.73 done in 365.202 ms
+2026.09.25 01:41:11.471	Trades	'53171390': modify #381841886 sell 2 XAUUSD sl: 4272.27, tp: 4269.73 -> sl: 4272.06, tp: 4269.73
+2026.09.25 01:41:11.696	Trades	'53171390': accepted modify #381841886 sell 2 XAUUSD sl: 4272.27, tp: 4269.73 -> sl: 4272.06, tp: 4269.73
+2026.09.25 01:41:11.715	Trades	'53171390': modify #381841886 sell 2 XAUUSD -> sl: 4272.06, tp: 4269.73 done in 244.421 ms
+2026.09.25 01:41:16.815	Trades	'53171390': modify #381841886 sell 2 XAUUSD sl: 4272.06, tp: 4269.73 -> sl: 4271.86, tp: 4269.73
+2026.09.25 01:41:16.989	Trades	'53171390': accepted modify #381841886 sell 2 XAUUSD sl: 4272.06, tp: 4269.73 -> sl: 4271.86, tp: 4269.73
+2026.09.25 01:41:17.006	Trades	'53171390': modify #381841886 sell 2 XAUUSD -> sl: 4271.86, tp: 4269.73 done in 190.853 ms
+2026.09.25 01:44:05.189	Trades	'53171390': modify #381841886 sell 2 XAUUSD sl: 4271.86, tp: 4269.73 -> sl: 4271.60, tp: 4269.73
+2026.09.25 01:44:05.337	Trades	'53171390': accepted modify #381841886 sell 2 XAUUSD sl: 4271.86, tp: 4269.73 -> sl: 4271.60, tp: 4269.73
+2026.09.25 01:44:05.337	Trades	'53171390': modify #381841886 sell 2 XAUUSD -> sl: 4271.60, tp: 4269.73 done in 148.715 ms
+2026.09.25 01:44:13.757	Trades	'53171390': modify #381841886 sell 2 XAUUSD sl: 4271.60, tp: 4269.73 -> sl: 4271.50, tp: 4269.73
+2026.09.25 01:44:13.983	Trades	'53171390': accepted modify #381841886 sell 2 XAUUSD sl: 4271.60, tp: 4269.73 -> sl: 4271.50, tp: 4269.73
+2026.09.25 01:44:13.985	Trades	'53171390': modify #381841886 sell 2 XAUUSD -> sl: 4271.50, tp: 4269.73 done in 227.916 ms
+2026.09.25 01:44:26.542	Trades	'53171390': deal #338440059 buy 2 XAUUSD at 4271.70 done (based on order #381842358)
+2026.09.25 01:52:01.393	Trades	'53171390': market sell 2 XAUUSD sl: 4269.98 tp: 4264.16
+2026.09.25 01:52:01.583	Trades	'53171390': accepted market sell 2 XAUUSD sl: 4269.98 tp: 4264.16
+2026.09.25 01:52:01.609	Trades	'53171390': deal #338441002 sell 2 XAUUSD at 4268.01 done (based on order #381843433)
+2026.09.25 01:52:01.618	Trades	'53171390': order #381843433 sell 2 / 2 XAUUSD at 4268.01 done in 225.383 ms
+2026.09.25 01:54:36.069	Trades	'53171390': deal #338441440 buy 2 XAUUSD at 4270.14 done (based on order #381843890)
+2026.09.25 01:56:18.120	Network	'53171390': connection to Alpari-MT5-Demo lost
+2026.09.25 01:56:36.218	Network	'53171390': authorized on Alpari-MT5-Demo through MT5-Demo.Asia.7 (ping: 133.46 ms, build 6090)
+2026.09.25 01:56:36.218	Network	'53171390': previous successful authorization performed from 2.145.94.42 on 2026.09.25 01:01:46
+2026.09.25 01:56:37.440	Network	'53171390': terminal synchronized with Alpari: 0 positions, 0 orders, 879 symbols, 0 spreads
+2026.09.25 01:56:37.440	Network	'53171390': trading has been enabled, demo account - hedging mode
+2026.09.25 01:56:37.440	Network	'53171390': balance management has been disabled - demo account
+2026.09.25 01:56:37.678	Network	'53171390': scanning network for access points
+2026.09.25 01:57:09.550	Network	'53171390': scanning network finished
+2026.09.25 01:59:01.563	Trades	'53171390': market buy 2 XAUUSD sl: 4270.27 tp: 4274.41
+2026.09.25 01:59:01.796	Trades	'53171390': accepted market buy 2 XAUUSD sl: 4270.27 tp: 4274.41
+2026.09.25 01:59:01.866	Trades	'53171390': deal #338442095 buy 2 XAUUSD at 4271.69 done (based on order #381844578)
+2026.09.25 01:59:01.866	Trades	'53171390': order #381844578 buy 2 / 2 XAUUSD at 4271.69 done in 303.894 ms
+2026.09.25 02:00:42.286	Trades	'53171390': modify #381844578 buy 2 XAUUSD sl: 4270.27, tp: 4274.41 -> sl: 4272.16, tp: 4274.41
+2026.09.25 02:00:42.466	Trades	'53171390': accepted modify #381844578 buy 2 XAUUSD sl: 4270.27, tp: 4274.41 -> sl: 4272.16, tp: 4274.41
+2026.09.25 02:00:42.467	Trades	'53171390': modify #381844578 buy 2 XAUUSD -> sl: 4272.16, tp: 4274.41 done in 180.984 ms
+2026.09.25 02:01:02.076	Trades	'53171390': deal #338442478 sell 2 XAUUSD at 4271.97 done (based on order #381844989)
+2026.09.25 02:04:02.156	Trades	'53171390': market buy 2 XAUUSD sl: 4270.49 tp: 4275.58
+2026.09.25 02:04:02.394	Trades	'53171390': accepted market buy 2 XAUUSD sl: 4270.49 tp: 4275.58
+2026.09.25 02:04:02.412	Trades	'53171390': deal #338442708 buy 2 XAUUSD at 4272.27 done (based on order #381845221)
+2026.09.25 02:04:02.418	Trades	'53171390': order #381845221 buy 2 / 2 XAUUSD at 4272.27 done in 262.418 ms
+2026.09.25 02:09:02.894	Trades	'53171390': deal #338443046 sell 2 XAUUSD at 4270.88 done (based on order #381845581)
+2026.09.25 02:14:02.417	Trades	'53171390': market sell 2 XAUUSD sl: 4273.07 tp: 4266.32
+2026.09.25 02:14:03.135	Trades	'53171390': accepted market sell 2 XAUUSD sl: 4273.07 tp: 4266.32
+2026.09.25 02:14:03.189	Trades	'53171390': deal #338444111 sell 2 XAUUSD at 4270.69 done (based on order #381846679)
+2026.09.25 02:14:03.190	Trades	'53171390': order #381846679 sell 2 / 2 XAUUSD at 4270.69 done in 772.789 ms
+2026.09.25 02:25:27.328	Trades	'53171390': deal #338445512 buy 2 XAUUSD at 4273.15 done (based on order #381848130)
+2026.09.25 02:28:01.645	Trades	'53171390': market buy 2 XAUUSD sl: 4272.16 tp: 4276.30
+2026.09.25 02:28:02.255	Trades	'53171390': accepted market buy 2 XAUUSD sl: 4272.16 tp: 4276.30
+2026.09.25 02:28:02.297	Trades	'53171390': deal #338446224 buy 2 XAUUSD at 4273.58 done (based on order #381848841)
+2026.09.25 02:28:02.297	Trades	'53171390': order #381848841 buy 2 / 2 XAUUSD at 4273.58 done in 652.969 ms
+2026.09.25 02:29:45.664	Trades	'53171390': deal #338446386 sell 2 XAUUSD at 4272.10 done (based on order #381849002)
+2026.09.25 02:33:00.112	Trades	'53171390': market buy 2 XAUUSD sl: 4271.98 tp: 4277.76
+2026.09.25 02:33:00.769	Trades	'53171390': accepted market buy 2 XAUUSD sl: 4271.98 tp: 4277.76
+2026.09.25 02:33:00.835	Trades	'53171390': deal #338446957 buy 2 XAUUSD at 4273.95 done (based on order #381849747)
+2026.09.25 02:33:00.836	Trades	'53171390': order #381849747 buy 2 / 2 XAUUSD at 4273.95 done in 724.502 ms
+2026.09.25 02:38:57.865	Trades	'53171390': deal #338448056 sell 2 XAUUSD at 4271.95 done (based on order #381850875)
+2026.09.25 02:40:00.234	Trades	'53171390': market buy 2 XAUUSD sl: 4271.49 tp: 4277.83
+2026.09.25 02:40:00.417	Trades	'53171390': accepted market buy 2 XAUUSD sl: 4271.49 tp: 4277.83
+2026.09.25 02:40:00.490	Trades	'53171390': deal #338448270 buy 2 XAUUSD at 4273.64 done (based on order #381851097)
+2026.09.25 02:40:00.514	Trades	'53171390': order #381851097 buy 2 / 2 XAUUSD at 4273.64 done in 280.584 ms
+2026.09.25 02:47:58.722	Trades	'53171390': deal #338449515 sell 2 XAUUSD at 4271.39 done (based on order #381852378)
+2026.09.25 02:56:00.180	Trades	'53171390': market sell 2 XAUUSD sl: 4273.97 tp: 4267.15
+2026.09.25 02:56:00.340	Trades	'53171390': accepted market sell 2 XAUUSD sl: 4273.97 tp: 4267.15
+2026.09.25 02:56:00.423	Trades	'53171390': deal #338450313 sell 2 XAUUSD at 4271.67 done (based on order #381853198)
+2026.09.25 02:56:00.427	Trades	'53171390': order #381853198 sell 2 / 2 XAUUSD at 4271.67 done in 247.486 ms
+2026.09.25 03:01:55.418	Trades	'53171390': deal #338450952 buy 2 XAUUSD at 4274.01 done (based on order #381853862)
+2026.09.25 03:05:00.174	Trades	'53171390': market sell 2 XAUUSD sl: 4274.57 tp: 4268.84
+2026.09.25 03:05:00.376	Trades	'53171390': accepted market sell 2 XAUUSD sl: 4274.57 tp: 4268.84
+2026.09.25 03:05:00.404	Trades	'53171390': deal #338451354 sell 2 XAUUSD at 4272.62 done (based on order #381854270)
+2026.09.25 03:05:00.411	Trades	'53171390': order #381854270 sell 2 / 2 XAUUSD at 4272.62 done in 237.775 ms
+2026.09.25 03:08:59.369	Trades	'53171390': deal #338451886 buy 2 XAUUSD at 4274.71 done (based on order #381854824)
+2026.09.25 03:50:03.283	Network	'53171390': connection to Alpari-MT5-Demo lost
+2026.09.25 03:50:07.586	Network	'53171390': authorized on Alpari-MT5-Demo through MT5-Demo.Asia.13 (ping: 148.22 ms, build 6090)
+2026.09.25 03:50:07.586	Network	'53171390': previous successful authorization performed from 2.145.94.42 on 2026.09.25 01:26:34
+2026.09.25 03:50:08.303	Network	'53171390': terminal synchronized with Alpari: 0 positions, 0 orders, 879 symbols, 0 spreads
+2026.09.25 03:50:08.303	Network	'53171390': trading has been enabled, demo account - hedging mode
+2026.09.25 03:50:08.303	Network	'53171390': balance management has been disabled - demo account
+2026.09.25 03:50:09.822	Network	'53171390': scanning network for access points
+2026.09.25 03:50:42.077	Network	'53171390': scanning network finished
+2026.09.25 03:50:42.077	Network	'53171390': auto connecting to a better access point with 89 % quality (previous: 86 %)
+2026.09.25 03:50:42.079	Network	'53171390': connection to Alpari-MT5-Demo lost
+2026.09.25 03:50:43.013	Network	'53171390': authorized on Alpari-MT5-Demo through MT5-Demo.Asia.15 (ping: 168.35 ms, build 6090)
+2026.09.25 03:50:43.013	Network	'53171390': previous successful authorization performed from 2.145.94.42 on 2026.09.25 03:20:07
+2026.09.25 03:50:43.704	Network	'53171390': terminal synchronized with Alpari: 0 positions, 0 orders, 879 symbols, 0 spreads
+2026.09.25 03:50:43.704	Network	'53171390': trading has been enabled, demo account - hedging mode
+2026.09.25 03:50:43.704	Network	'53171390': balance management has been disabled - demo account
