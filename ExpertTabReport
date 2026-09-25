@@ -1,0 +1,261 @@
+2026.09.22 22:27:10.137	Experts	automated trading is disabled because the account has been changed
+2026.09.22 22:27:35.012	EngulfingPurewith-mamad-kavian (XAUUSD,H1)	[ENGULFING] EA initialized. Symbol=XAUUSD TF=PERIOD_CURRENT Magic=20260904 ATR(14) SL Buffer ATR=0.35 RiskReward=2.00
+2026.09.22 22:27:38.865	EngulfingPurewith-mamad-kavian (XAUUSD,M5)	[ENGULFING] EA initialized. Symbol=XAUUSD TF=PERIOD_CURRENT Magic=20260904 ATR(14) SL Buffer ATR=0.35 RiskReward=2.00
+2026.09.22 22:30:00.150	EngulfingPurewith-mamad-kavian (XAUUSD,M5)	[ENGULFING] Bullish pattern detected at 2026.09.22 21:55
+2026.09.22 22:30:00.150	EngulfingPurewith-mamad-kavian (XAUUSD,M5)	[TRADE] Trading is disabled in terminal settings
+2026.09.22 22:55:00.145	EngulfingPurewith-mamad-kavian (XAUUSD,M5)	[ENGULFING] Bullish pattern detected at 2026.09.22 22:20
+2026.09.22 22:55:00.146	EngulfingPurewith-mamad-kavian (XAUUSD,M5)	[TRADE] Trading is disabled in terminal settings
+2026.09.23 03:19:59.904	EngulfingPurewith-mamad-kavian (XAUUSD,M5)	[ENGULFING] Bearish pattern detected at 2026.09.23 02:45
+2026.09.23 03:19:59.905	EngulfingPurewith-mamad-kavian (XAUUSD,M5)	[TRADE] Trading is disabled in terminal settings
+2026.09.23 04:09:59.804	EngulfingPurewith-mamad-kavian (XAUUSD,M5)	[ENGULFING] Bearish pattern detected at 2026.09.23 03:35
+2026.09.23 04:09:59.805	EngulfingPurewith-mamad-kavian (XAUUSD,M5)	[TRADE] Trading is disabled in terminal settings
+2026.09.23 04:29:59.879	EngulfingPurewith-mamad-kavian (XAUUSD,M5)	[ENGULFING] Bullish pattern detected at 2026.09.23 03:55
+2026.09.23 04:29:59.881	EngulfingPurewith-mamad-kavian (XAUUSD,M5)	[TRADE] Trading is disabled in terminal settings
+2026.09.23 04:34:59.754	EngulfingPurewith-mamad-kavian (XAUUSD,M5)	[ENGULFING] Bearish pattern detected at 2026.09.23 04:00
+2026.09.23 04:34:59.756	EngulfingPurewith-mamad-kavian (XAUUSD,M5)	[TRADE] Trading is disabled in terminal settings
+2026.09.23 05:09:59.708	EngulfingPurewith-mamad-kavian (XAUUSD,M5)	[ENGULFING] Bullish pattern detected at 2026.09.23 04:35
+2026.09.23 05:09:59.722	EngulfingPurewith-mamad-kavian (XAUUSD,M5)	[TRADE] Trading is disabled in terminal settings
+2026.09.23 05:19:59.889	EngulfingPurewith-mamad-kavian (XAUUSD,M5)	[ENGULFING] Bullish pattern detected at 2026.09.23 04:45
+2026.09.23 05:19:59.890	EngulfingPurewith-mamad-kavian (XAUUSD,M5)	[TRADE] Trading is disabled in terminal settings
+2026.09.23 06:09:59.800	EngulfingPurewith-mamad-kavian (XAUUSD,M5)	[ENGULFING] Bearish pattern detected at 2026.09.23 05:35
+2026.09.23 06:09:59.800	EngulfingPurewith-mamad-kavian (XAUUSD,M5)	[TRADE] Trading is disabled in terminal settings
+2026.09.24 21:49:09.590	Experts	automated trading is enabled
+2026.09.24 21:53:52.330	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] EA initialized. Symbol=XAUUSD TF=PERIOD_CURRENT Magic=20260904 ATR(14) SL Buffer ATR=0.35 RiskReward=2.00
+2026.09.24 21:56:01.644	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.24 21:25
+2026.09.24 21:56:01.646	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] BUY signal | ATR = 2.36 | SL = 4267.57 | TP = 4282.56 | Spread = 12 points
+2026.09.24 21:56:01.646	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=500.00 | tick-math=50.00 -> conservative value used
+2026.09.24 21:56:01.646	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=500.00 | tick-math=50.00 -> conservative value used
+2026.09.24 21:56:01.646	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Lot = 2.00
+2026.09.24 21:56:01.860	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Position opened successfully (BUY, lot=2.00, order=381789923, retcode=10009)
+2026.09.24 22:08:01.738	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.24 21:37
+2026.09.24 22:08:01.739	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] BUY signal | ATR = 2.37 | SL = 4266.87 | TP = 4274.25 | Spread = 11 points
+2026.09.24 22:08:01.739	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] MaxPositions (1) already reached - trade skipped
+2026.09.24 22:09:00.937	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381789923 modified | BUY | SL=4275.52 | TP fixed at 4282.56 | ATR=2.37
+2026.09.24 22:09:01.159	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381789923 modified | BUY | SL=4275.59 | TP fixed at 4282.56 | ATR=2.37
+2026.09.24 22:09:03.006	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381789923 modified | BUY | SL=4275.96 | TP fixed at 4282.56 | ATR=2.88
+2026.09.24 22:09:06.088	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381789923 modified | BUY | SL=4276.04 | TP fixed at 4282.56 | ATR=2.88
+2026.09.24 22:09:06.471	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381789923 modified | BUY | SL=4277.32 | TP fixed at 4282.56 | ATR=2.88
+2026.09.24 22:09:06.791	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381789923 modified | BUY | SL=4278.15 | TP fixed at 4282.56 | ATR=2.88
+2026.09.24 22:09:07.308	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381789923 modified | BUY | SL=4278.23 | TP fixed at 4282.56 | ATR=2.88
+2026.09.24 22:09:07.516	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381789923 modified | BUY | SL=4278.76 | TP fixed at 4282.56 | ATR=2.88
+2026.09.24 22:09:10.297	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	CTrade::OrderSend: modify position #381789923 XAUUSD (sl: 4278.61, tp: 4282.56) [position closed]
+2026.09.24 22:09:10.297	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Failed to modify position #381789923 | SL=4278.61 | retcode=10036 position closed
+2026.09.24 22:28:01.627	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bearish pattern detected at 2026.09.24 21:57
+2026.09.24 22:28:01.628	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] SELL signal | ATR = 1.95 | SL = 4275.63 | TP = 4268.52 | Spread = 12 points
+2026.09.24 22:28:01.628	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=237.00 | tick-math=23.70 -> conservative value used
+2026.09.24 22:28:01.628	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] Lot capped: 4.26 -> 2.00
+2026.09.24 22:28:01.628	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=237.00 | tick-math=23.70 -> conservative value used
+2026.09.24 22:28:01.628	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Lot = 2.00
+2026.09.24 22:28:01.835	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Position opened successfully (SELL, lot=2.00, order=381806062, retcode=10009)
+2026.09.24 22:31:08.112	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381806062 modified | SELL | SL=4272.91 | TP fixed at 4268.52 | ATR=2.05
+2026.09.24 22:31:24.138	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381806062 modified | SELL | SL=4272.83 | TP fixed at 4268.52 | ATR=2.05
+2026.09.24 22:31:25.739	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381806062 modified | SELL | SL=4272.62 | TP fixed at 4268.52 | ATR=2.05
+2026.09.24 22:31:27.235	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381806062 modified | SELL | SL=4272.30 | TP fixed at 4268.52 | ATR=2.05
+2026.09.24 22:37:01.489	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.24 22:06
+2026.09.24 22:37:01.505	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] BUY signal | ATR = 2.06 | SL = 4267.26 | TP = 4273.56 | Spread = 12 points
+2026.09.24 22:37:01.505	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=210.00 | tick-math=21.00 -> conservative value used
+2026.09.24 22:37:01.505	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] Lot capped: 4.82 -> 2.00
+2026.09.24 22:37:01.505	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=210.00 | tick-math=21.00 -> conservative value used
+2026.09.24 22:37:01.505	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Lot = 2.00
+2026.09.24 22:37:01.756	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Position opened successfully (BUY, lot=2.00, order=381810861, retcode=10009)
+2026.09.24 22:46:01.715	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.24 22:15
+2026.09.24 22:46:01.723	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] BUY signal | ATR = 1.71 | SL = 4266.73 | TP = 4275.00 | Spread = 11 points
+2026.09.24 22:46:01.723	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] MaxPositions (1) already reached - trade skipped
+2026.09.24 22:50:02.778	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381810861 modified | BUY | SL=4269.98 | TP fixed at 4273.56 | ATR=1.54
+2026.09.24 22:50:05.616	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381810861 modified | BUY | SL=4270.19 | TP fixed at 4273.56 | ATR=1.54
+2026.09.24 22:51:01.550	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bearish pattern detected at 2026.09.24 22:20
+2026.09.24 22:51:01.565	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] SELL signal | ATR = 1.53 | SL = 4272.26 | TP = 4264.39 | Spread = 12 points
+2026.09.24 22:51:01.565	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=262.00 | tick-math=26.20 -> conservative value used
+2026.09.24 22:51:01.565	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] Lot capped: 3.86 -> 2.00
+2026.09.24 22:51:01.565	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=262.00 | tick-math=26.20 -> conservative value used
+2026.09.24 22:51:01.565	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Lot = 2.00
+2026.09.24 22:51:01.782	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Position opened successfully (SELL, lot=2.00, order=381815157, retcode=10009)
+2026.09.24 22:52:01.522	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.24 22:21
+2026.09.24 22:52:01.526	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] BUY signal | ATR = 1.57 | SL = 4268.62 | TP = 4276.69 | Spread = 12 points
+2026.09.24 22:52:01.526	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] MaxPositions (1) already reached - trade skipped
+2026.09.24 23:02:01.517	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.24 22:31
+2026.09.24 23:02:01.519	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] BUY signal | ATR = 1.74 | SL = 4270.82 | TP = 4277.69 | Spread = 12 points
+2026.09.24 23:02:01.519	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=229.00 | tick-math=22.90 -> conservative value used
+2026.09.24 23:02:01.519	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] Lot capped: 4.39 -> 2.00
+2026.09.24 23:02:01.519	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=229.00 | tick-math=22.90 -> conservative value used
+2026.09.24 23:02:01.519	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Lot = 2.00
+2026.09.24 23:02:01.724	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Position opened successfully (BUY, lot=2.00, order=381818159, retcode=10009)
+2026.09.24 23:09:48.590	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381818159 modified | BUY | SL=4274.02 | TP fixed at 4277.69 | ATR=1.46
+2026.09.24 23:09:52.752	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381818159 modified | BUY | SL=4274.12 | TP fixed at 4277.69 | ATR=1.46
+2026.09.24 23:10:22.756	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381818159 modified | BUY | SL=4274.20 | TP fixed at 4277.69 | ATR=1.55
+2026.09.24 23:15:01.523	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bearish pattern detected at 2026.09.24 22:44
+2026.09.24 23:15:01.531	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] SELL signal | ATR = 1.49 | SL = 4276.35 | TP = 4270.17 | Spread = 11 points
+2026.09.24 23:15:01.531	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=206.00 | tick-math=20.60 -> conservative value used
+2026.09.24 23:15:01.531	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] Lot capped: 4.89 -> 2.00
+2026.09.24 23:15:01.531	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=206.00 | tick-math=20.60 -> conservative value used
+2026.09.24 23:15:01.531	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Lot = 2.00
+2026.09.24 23:15:01.750	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Position opened successfully (SELL, lot=2.00, order=381822013, retcode=10009)
+2026.09.24 23:19:01.771	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bearish pattern detected at 2026.09.24 22:48
+2026.09.24 23:19:01.772	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] SELL signal | ATR = 1.51 | SL = 4276.60 | TP = 4270.87 | Spread = 11 points
+2026.09.24 23:19:01.772	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] MaxPositions (1) already reached - trade skipped
+2026.09.24 23:25:01.521	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.24 22:54
+2026.09.24 23:25:01.523	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] BUY signal | ATR = 1.39 | SL = 4273.01 | TP = 4277.29 | Spread = 12 points
+2026.09.24 23:25:01.523	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] MaxPositions (1) already reached - trade skipped
+2026.09.24 23:32:38.256	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381822013 modified | SELL | SL=4273.42 | TP fixed at 4270.17 | ATR=1.46
+2026.09.24 23:32:38.509	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381822013 modified | SELL | SL=4273.32 | TP fixed at 4270.17 | ATR=1.46
+2026.09.24 23:32:42.611	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381822013 modified | SELL | SL=4273.24 | TP fixed at 4270.17 | ATR=1.46
+2026.09.24 23:33:31.243	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381822013 modified | SELL | SL=4273.18 | TP fixed at 4270.17 | ATR=1.42
+2026.09.24 23:33:31.725	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381822013 modified | SELL | SL=4273.01 | TP fixed at 4270.17 | ATR=1.42
+2026.09.24 23:41:01.669	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.24 23:10
+2026.09.24 23:41:01.670	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] BUY signal | ATR = 1.39 | SL = 4269.59 | TP = 4277.32 | Spread = 19 points
+2026.09.24 23:41:01.670	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=258.00 | tick-math=25.80 -> conservative value used
+2026.09.24 23:41:01.670	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] Lot capped: 3.91 -> 2.00
+2026.09.24 23:41:01.670	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=258.00 | tick-math=25.80 -> conservative value used
+2026.09.24 23:41:01.670	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Lot = 2.00
+2026.09.24 23:41:01.856	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Position opened successfully (BUY, lot=2.00, order=381829918, retcode=10009)
+2026.09.24 23:43:01.502	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bearish pattern detected at 2026.09.24 23:12
+2026.09.24 23:43:01.510	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] SELL signal | ATR = 1.43 | SL = 4273.58 | TP = 4267.40 | Spread = 19 points
+2026.09.24 23:43:01.510	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] MaxPositions (1) already reached - trade skipped
+2026.09.24 23:52:01.499	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.24 23:21
+2026.09.24 23:52:01.501	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] BUY signal | ATR = 1.57 | SL = 4263.99 | TP = 4269.99 | Spread = 19 points
+2026.09.24 23:52:01.501	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=200.00 | tick-math=20.00 -> conservative value used
+2026.09.24 23:52:01.501	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] Lot capped: 5.02 -> 2.00
+2026.09.24 23:52:01.501	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=200.00 | tick-math=20.00 -> conservative value used
+2026.09.24 23:52:01.501	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Lot = 2.00
+2026.09.24 23:52:01.879	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Position opened successfully (BUY, lot=2.00, order=381832973, retcode=10009)
+2026.09.24 23:53:01.575	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bearish pattern detected at 2026.09.24 23:22
+2026.09.24 23:53:01.576	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] SELL signal | ATR = 1.60 | SL = 4266.59 | TP = 4261.34 | Spread = 19 points
+2026.09.24 23:53:01.576	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] MaxPositions (1) already reached - trade skipped
+2026.09.25 00:08:58.001	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381832973 modified | BUY | SL=4267.04 | TP fixed at 4269.99 | ATR=1.24
+2026.09.25 00:09:01.060	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381832973 modified | BUY | SL=4267.14 | TP fixed at 4269.99 | ATR=1.24
+2026.09.25 00:09:01.523	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.24 23:38
+2026.09.25 00:09:01.524	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] BUY signal | ATR = 1.29 | SL = 4265.49 | TP = 4273.83 | Spread = 19 points
+2026.09.25 00:09:01.525	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] MaxPositions (1) already reached - trade skipped
+2026.09.25 00:09:17.064	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381832973 modified | BUY | SL=4267.34 | TP fixed at 4269.99 | ATR=1.29
+2026.09.25 00:09:33.551	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381832973 modified | BUY | SL=4267.43 | TP fixed at 4269.99 | ATR=1.29
+2026.09.25 00:09:38.603	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381832973 modified | BUY | SL=4267.49 | TP fixed at 4269.99 | ATR=1.29
+2026.09.25 00:09:52.092	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381832973 modified | BUY | SL=4267.54 | TP fixed at 4269.99 | ATR=1.29
+2026.09.25 00:09:58.575	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381832973 modified | BUY | SL=4267.65 | TP fixed at 4269.99 | ATR=1.29
+2026.09.25 00:09:59.647	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381832973 modified | BUY | SL=4267.79 | TP fixed at 4269.99 | ATR=1.29
+2026.09.25 00:10:01.886	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381832973 modified | BUY | SL=4267.97 | TP fixed at 4269.99 | ATR=1.26
+2026.09.25 00:10:20.041	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381832973 modified | BUY | SL=4268.49 | TP fixed at 4269.99 | ATR=1.26
+2026.09.25 00:10:20.325	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381832973 modified | BUY | SL=4268.68 | TP fixed at 4269.99 | ATR=1.26
+2026.09.25 00:23:01.512	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bearish pattern detected at 2026.09.24 23:52
+2026.09.25 00:23:01.513	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] SL widened to floor: dist=1.41
+2026.09.25 00:23:01.513	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] SELL signal | ATR = 1.41 | SL = 4273.05 | TP = 4268.83 | Spread = 19 points
+2026.09.25 00:23:01.513	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=141.00 | tick-math=14.10 -> conservative value used
+2026.09.25 00:23:01.513	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] Lot capped: 7.18 -> 2.00
+2026.09.25 00:23:01.513	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=141.00 | tick-math=14.10 -> conservative value used
+2026.09.25 00:23:01.513	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Lot = 2.00
+2026.09.25 00:23:01.926	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Position opened successfully (SELL, lot=2.00, order=381838611, retcode=10009)
+2026.09.25 01:39:01.458	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bearish pattern detected at 2026.09.25 01:08
+2026.09.25 01:39:01.470	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] SELL signal | ATR = 1.33 | SL = 4273.86 | TP = 4269.73 | Spread = 19 points
+2026.09.25 01:39:01.470	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=138.00 | tick-math=13.80 -> conservative value used
+2026.09.25 01:39:01.470	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] Lot capped: 7.31 -> 2.00
+2026.09.25 01:39:01.470	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=138.00 | tick-math=13.80 -> conservative value used
+2026.09.25 01:39:01.470	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Lot = 2.00
+2026.09.25 01:39:01.749	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Position opened successfully (SELL, lot=2.00, order=381841886, retcode=10009)
+2026.09.25 01:40:16.197	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381841886 modified | SELL | SL=4272.27 | TP fixed at 4269.73 | ATR=1.27
+2026.09.25 01:41:11.715	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381841886 modified | SELL | SL=4272.06 | TP fixed at 4269.73 | ATR=1.25
+2026.09.25 01:41:17.006	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381841886 modified | SELL | SL=4271.86 | TP fixed at 4269.73 | ATR=1.25
+2026.09.25 01:44:05.337	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381841886 modified | SELL | SL=4271.60 | TP fixed at 4269.73 | ATR=1.19
+2026.09.25 01:44:13.985	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381841886 modified | SELL | SL=4271.50 | TP fixed at 4269.73 | ATR=1.19
+2026.09.25 01:52:01.390	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bearish pattern detected at 2026.09.25 01:21
+2026.09.25 01:52:01.392	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] SELL signal | ATR = 1.12 | SL = 4269.98 | TP = 4264.16 | Spread = 19 points
+2026.09.25 01:52:01.392	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=194.00 | tick-math=19.40 -> conservative value used
+2026.09.25 01:52:01.392	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] Lot capped: 5.21 -> 2.00
+2026.09.25 01:52:01.392	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=194.00 | tick-math=19.40 -> conservative value used
+2026.09.25 01:52:01.392	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Lot = 2.00
+2026.09.25 01:52:01.618	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Position opened successfully (SELL, lot=2.00, order=381843433, retcode=10009)
+2026.09.25 01:59:01.559	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.25 01:28
+2026.09.25 01:59:01.562	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] BUY signal | ATR = 1.12 | SL = 4270.27 | TP = 4274.41 | Spread = 19 points
+2026.09.25 01:59:01.562	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=138.00 | tick-math=13.80 -> conservative value used
+2026.09.25 01:59:01.562	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] Lot capped: 7.29 -> 2.00
+2026.09.25 01:59:01.562	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=138.00 | tick-math=13.80 -> conservative value used
+2026.09.25 01:59:01.562	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Lot = 2.00
+2026.09.25 01:59:01.866	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Position opened successfully (BUY, lot=2.00, order=381844578, retcode=10009)
+2026.09.25 02:00:42.467	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRAILING] Position #381844578 modified | BUY | SL=4272.16 | TP fixed at 4274.41 | ATR=1.11
+2026.09.25 02:04:02.154	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.25 01:33
+2026.09.25 02:04:02.156	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] BUY signal | ATR = 1.16 | SL = 4270.49 | TP = 4275.58 | Spread = 19 points
+2026.09.25 02:04:02.156	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=170.00 | tick-math=17.00 -> conservative value used
+2026.09.25 02:04:02.156	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] Lot capped: 5.92 -> 2.00
+2026.09.25 02:04:02.156	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=170.00 | tick-math=17.00 -> conservative value used
+2026.09.25 02:04:02.156	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Lot = 2.00
+2026.09.25 02:04:02.418	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Position opened successfully (BUY, lot=2.00, order=381845221, retcode=10009)
+2026.09.25 02:08:01.535	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.25 01:37
+2026.09.25 02:08:01.538	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] BUY signal | ATR = 1.09 | SL = 4270.30 | TP = 4274.35 | Spread = 19 points
+2026.09.25 02:08:01.538	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] MaxPositions (1) already reached - trade skipped
+2026.09.25 02:14:02.416	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bearish pattern detected at 2026.09.25 01:43
+2026.09.25 02:14:02.417	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] SELL signal | ATR = 1.46 | SL = 4273.07 | TP = 4266.32 | Spread = 19 points
+2026.09.25 02:14:02.417	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=225.00 | tick-math=22.50 -> conservative value used
+2026.09.25 02:14:02.417	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] Lot capped: 4.46 -> 2.00
+2026.09.25 02:14:02.417	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=225.00 | tick-math=22.50 -> conservative value used
+2026.09.25 02:14:02.417	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Lot = 2.00
+2026.09.25 02:14:03.190	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Position opened successfully (SELL, lot=2.00, order=381846679, retcode=10009)
+2026.09.25 02:21:01.742	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.25 01:50
+2026.09.25 02:21:01.744	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] BUY signal | ATR = 1.42 | SL = 4270.58 | TP = 4275.23 | Spread = 19 points
+2026.09.25 02:21:01.744	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] MaxPositions (1) already reached - trade skipped
+2026.09.25 02:28:01.643	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.25 01:57
+2026.09.25 02:28:01.644	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] BUY signal | ATR = 1.17 | SL = 4272.16 | TP = 4276.30 | Spread = 19 points
+2026.09.25 02:28:01.644	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=138.00 | tick-math=13.80 -> conservative value used
+2026.09.25 02:28:01.644	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] Lot capped: 7.23 -> 2.00
+2026.09.25 02:28:01.644	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=138.00 | tick-math=13.80 -> conservative value used
+2026.09.25 02:28:01.644	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Lot = 2.00
+2026.09.25 02:28:02.297	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Position opened successfully (BUY, lot=2.00, order=381848841, retcode=10009)
+2026.09.25 02:29:01.487	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bearish pattern detected at 2026.09.25 01:58
+2026.09.25 02:29:01.488	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] SL widened to floor: dist=1.14
+2026.09.25 02:29:01.488	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] SELL signal | ATR = 1.14 | SL = 4273.89 | TP = 4270.48 | Spread = 19 points
+2026.09.25 02:29:01.488	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] MaxPositions (1) already reached - trade skipped
+2026.09.25 02:33:00.110	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.25 02:02
+2026.09.25 02:33:00.111	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] BUY signal | ATR = 1.19 | SL = 4271.98 | TP = 4277.76 | Spread = 14 points
+2026.09.25 02:33:00.111	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=193.00 | tick-math=19.30 -> conservative value used
+2026.09.25 02:33:00.111	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] Lot capped: 5.15 -> 2.00
+2026.09.25 02:33:00.111	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=193.00 | tick-math=19.30 -> conservative value used
+2026.09.25 02:33:00.111	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Lot = 2.00
+2026.09.25 02:33:00.836	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Position opened successfully (BUY, lot=2.00, order=381849747, retcode=10009)
+2026.09.25 02:40:00.231	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.25 02:09
+2026.09.25 02:40:00.233	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] BUY signal | ATR = 1.38 | SL = 4271.49 | TP = 4277.83 | Spread = 14 points
+2026.09.25 02:40:00.233	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=211.00 | tick-math=21.10 -> conservative value used
+2026.09.25 02:40:00.233	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] Lot capped: 4.69 -> 2.00
+2026.09.25 02:40:00.233	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=211.00 | tick-math=21.10 -> conservative value used
+2026.09.25 02:40:00.233	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Lot = 2.00
+2026.09.25 02:40:00.514	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Position opened successfully (BUY, lot=2.00, order=381851097, retcode=10009)
+2026.09.25 02:47:00.109	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bearish pattern detected at 2026.09.25 02:16
+2026.09.25 02:47:00.110	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] SL widened to floor: dist=1.43
+2026.09.25 02:47:00.110	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] SELL signal | ATR = 1.43 | SL = 4274.44 | TP = 4270.14 | Spread = 14 points
+2026.09.25 02:47:00.110	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] MaxPositions (1) already reached - trade skipped
+2026.09.25 02:56:00.178	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bearish pattern detected at 2026.09.25 02:25
+2026.09.25 02:56:00.179	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] SELL signal | ATR = 1.29 | SL = 4273.97 | TP = 4267.15 | Spread = 14 points
+2026.09.25 02:56:00.179	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=227.00 | tick-math=22.70 -> conservative value used
+2026.09.25 02:56:00.179	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] Lot capped: 4.34 -> 2.00
+2026.09.25 02:56:00.179	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=227.00 | tick-math=22.70 -> conservative value used
+2026.09.25 02:56:00.179	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Lot = 2.00
+2026.09.25 02:56:00.427	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Position opened successfully (SELL, lot=2.00, order=381853198, retcode=10009)
+2026.09.25 03:05:00.172	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bearish pattern detected at 2026.09.25 02:34
+2026.09.25 03:05:00.173	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] SELL signal | ATR = 1.18 | SL = 4274.57 | TP = 4268.84 | Spread = 14 points
+2026.09.25 03:05:00.173	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=191.00 | tick-math=19.10 -> conservative value used
+2026.09.25 03:05:00.173	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] Lot capped: 5.13 -> 2.00
+2026.09.25 03:05:00.173	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] lossPerLot mismatch: OrderCalcProfit=191.00 | tick-math=19.10 -> conservative value used
+2026.09.25 03:05:00.173	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Lot = 2.00
+2026.09.25 03:05:00.411	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[TRADE] Position opened successfully (SELL, lot=2.00, order=381854270, retcode=10009)
+2026.09.25 03:24:00.161	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bearish pattern detected at 2026.09.25 02:53
+2026.09.25 03:24:00.162	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] MaxTradesPerDay (10) reached - entry blocked
+2026.09.25 03:29:00.640	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bearish pattern detected at 2026.09.25 02:58
+2026.09.25 03:29:00.641	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] MaxTradesPerDay (10) reached - entry blocked
+2026.09.25 03:50:01.559	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.25 03:19
+2026.09.25 03:50:01.568	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] MaxTradesPerDay (10) reached - entry blocked
+2026.09.25 03:56:00.213	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.25 03:25
+2026.09.25 03:56:00.214	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] MaxTradesPerDay (10) reached - entry blocked
+2026.09.25 03:58:00.094	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bearish pattern detected at 2026.09.25 03:27
+2026.09.25 03:58:00.097	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] MaxTradesPerDay (10) reached - entry blocked
+2026.09.25 04:06:00.766	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.25 03:35
+2026.09.25 04:06:00.767	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] MaxTradesPerDay (10) reached - entry blocked
+2026.09.25 04:07:00.227	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bearish pattern detected at 2026.09.25 03:36
+2026.09.25 04:07:00.229	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] MaxTradesPerDay (10) reached - entry blocked
+2026.09.25 04:14:01.069	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bearish pattern detected at 2026.09.25 03:43
+2026.09.25 04:14:01.092	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] MaxTradesPerDay (10) reached - entry blocked
+2026.09.25 04:19:00.476	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.25 03:48
+2026.09.25 04:19:00.477	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] MaxTradesPerDay (10) reached - entry blocked
+2026.09.25 04:21:00.086	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bearish pattern detected at 2026.09.25 03:50
+2026.09.25 04:21:00.086	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] MaxTradesPerDay (10) reached - entry blocked
+2026.09.25 04:26:00.131	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.25 03:55
+2026.09.25 04:26:00.133	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] MaxTradesPerDay (10) reached - entry blocked
+2026.09.25 04:31:00.075	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.25 04:00
+2026.09.25 04:31:00.075	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] MaxTradesPerDay (10) reached - entry blocked
+2026.09.25 04:34:00.115	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[ENGULFING] Bullish pattern detected at 2026.09.25 04:03
+2026.09.25 04:34:00.116	EngulfingPurewith-mamad-kavian (XAUUSD,M1)	[RISK] MaxTradesPerDay (10) reached - entry blocked
